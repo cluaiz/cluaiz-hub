@@ -29,13 +29,13 @@ ability to interact with the outside world through standardized protocols.
 
 ## Skills vs Plugins vs Souls
 
-| | Skills | Plugins | Souls |
-|---|---|---|---|
-| **Purpose** | Teach the agent a new capability | Connect the agent to an external service or tool | Define the agent's core identity, persona, and overarching rules |
-| **Location** | `skills/<category>/<name>/` | `plugins/<category>/<name>/` | `souls/<name>/` |
-| **Assets** | `logic.wasm`, `state.kv-cache`, config files | `connector.json`, `connector.js`, MCP configs | None (Pure `SOUL.md` identity) |
-| **Network** | Typically offline (`network: false`) | Typically online (`network: true`) | Offline |
-| **Example** | PDF extraction, code auditing, VRAM management | Brave Search, GitHub API, database connectors | Sovereign Hacker, Data Scientist, Marketing Copywriter |
+|              | Skills                                         | Plugins                                          | Souls                                                            |
+| ------------ | ---------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------- |
+| **Purpose**  | Teach the agent a new capability               | Connect the agent to an external service or tool | Define the agent's core identity, persona, and overarching rules |
+| **Location** | `skills/<category>/<name>/`                    | `plugins/<category>/<name>/`                     | `souls/<name>/`                                                  |
+| **Assets**   | `logic.wasm`, `state.kv-cache`, config files   | `connector.json`, `connector.js`, MCP configs    | None (Pure `SOUL.md` identity)                                   |
+| **Network**  | Typically offline (`network: false`)           | Typically online (`network: true`)               | Offline                                                          |
+| **Example**  | PDF extraction, code auditing, VRAM management | Brave Search, GitHub API, database connectors    | Sovereign Hacker, Data Scientist, Marketing Copywriter           |
 
 ## How it works
 

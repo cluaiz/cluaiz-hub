@@ -34,11 +34,8 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Get list of changed files
-          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} || echo "")
-          
-          # Find all unique skill directories that changed
-          CHANGED_DIRS=$(echo "$CHANGED_FILES" | grep -E "^(skills|plugins|souls)/" | cut -d/ -f1-3 | sort -u || echo "")
+          # Find all skill directories containing SKILL.md
+          CHANGED_DIRS=$(find skills plugins souls -name "SKILL.md" -exec dirname {} \; | sort -u || echo "")
           
           if [ -z "$CHANGED_DIRS" ]; then
             echo "No skills changed."
@@ -61,6 +58,13 @@ jobs:
                 
                 ZIP_NAME="${NAME}-v${VERSION}.zip"
                 RELEASE_TAG="${NAME}-latest"
+                
+                # --- BUILD STEP (MOCK FOR NOW) ---
+                echo "Building native binaries and tensors..."
+                # In the future, this will run `cargo build --release --target wasm32-wasi`
+                printf "\\x00asm\\x01\\x00\\x00\\x00" > "$DIR/logic.wasm"
+                # In the future, this will run the KV cache generation ML script
+                echo '{"status": "ready", "version": "'$VERSION'"}' > "$DIR/state.kv-cache"
                 
                 # Zip the directory
                 echo "Zipping $DIR to $ZIP_NAME..."

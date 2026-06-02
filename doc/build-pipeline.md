@@ -1,6 +1,6 @@
 # The Cluaiz Build Pipeline
 
-One of the most powerful features of the Cluaiz Sovereign OS architecture is that **developers do not need to manually compile native binaries or generate neural tensors.** 
+One of the key features of the Cluaiz build pipeline is that **developers do not need to manually compile native binaries or generate neural tensors.** 
 
 The entire build process is handled automatically by the CI/CD pipeline (GitHub Actions).
 

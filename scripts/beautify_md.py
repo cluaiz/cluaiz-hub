@@ -43,7 +43,7 @@ def beautify_skills():
                             
                             # Check assets
                             has_wasm = "wasm" in links
-                            asset_desc = "Runs high-performance Native WASM logic (`logic.wasm`) for zero-latency execution." if has_wasm else "Executes natively via Sovereign Agent."
+                            asset_desc = "Runs native WASM logic (`logic.wasm`) for fast local execution." if has_wasm else "Executes via Cluaiz Engine."
                             
                             new_markdown = f"""---
 {frontmatter_str.strip()}
@@ -54,7 +54,7 @@ def beautify_skills():
 > **{desc}**
 
 ## 📖 Overview
-The `{name}` skill is a Sovereign native capability designed for the Cluaiz ecosystem. It operates seamlessly under the `{category}` category, providing highly optimized operations without relying on bloated external dependencies.
+The `{name}` skill is a native capability in the Cluaiz ecosystem, designed for the `{category}` category.
 
 ## 🎯 How to Use (Triggers)
 You can invoke this skill autonomously by using any of the following semantic triggers in your conversation:

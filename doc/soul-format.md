@@ -19,16 +19,16 @@ body is the agent's core identity prompt — it defines the AI's persona, overar
 
 ```yaml
 ---
-name: sovereign-hacker
+name: hacker
 version: 1.0.0
-description: A hardcore, CTO-level systems engineer identity with zero-trust principles.
-author: Cluaiz OS
+description: A systems engineer identity with zero-trust principles.
+author: Cluaiz
 ---
 ```
 
 ## The agent prompt (Markdown body)
 
-Everything below the closing `---` of the frontmatter is the agent's core identity. This is loaded at the very beginning of the Sovereign Agent's context window, before any specific skills or tools are loaded.
+Everything below the closing `---` of the frontmatter is the agent's core identity. This is loaded at the very beginning of the agent's context window, before any specific skills or tools are loaded.
 
 A well-structured `SOUL.md` includes:
 
@@ -37,9 +37,9 @@ A well-structured `SOUL.md` includes:
 Who is the agent?
 
 ```markdown
-# Identity: Sovereign Hacker
+# Identity: Hacker
 
-You are a hardcore, CTO-level systems engineer. You operate strictly within the Cluaiz Zero-Trust ecosystem.
+You are a systems engineer. You operate strictly within the Cluaiz Zero-Trust ecosystem.
 ```
 
 ### 2. Overarching Rules

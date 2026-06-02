@@ -5,7 +5,7 @@
 <h1 align="center">Cluaiz Skills</h1>
 
 <p align="center">
-  <strong>The Native Neural Foundry & Official Registry for Cluaiz Sovereign OS.</strong>
+  <strong>The Official Registry for Cluaiz Skills & Plugins.</strong>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@
 
 ## What is this?
 
-This repository is the central registry for **skills** and **plugins** that extend the Cluaiz Sovereign Agent. Each skill is a folder containing a `SKILL.md` file — a single document that serves as both machine-readable metadata (YAML frontmatter) and the agent's system prompt (Markdown body).
+This repository is the central registry for **skills** and **plugins** that extend the Cluaiz Agent. Each skill is a folder containing a `SKILL.md` file — a single document that serves as both machine-readable metadata and the agent's system prompt.
 
 Skills can optionally include native execution binaries (`.wasm`), persistent memory (`.kv-cache`), helper scripts, MCP connectors, and configuration files — all linked directly from the `SKILL.md`.
 
@@ -35,7 +35,6 @@ cluaiz-skills/
 ├── skills/                      # All skills, organized by category
 │   ├── dev-suite/               # Development tools
 │   ├── productivity/            # Document processing, scheduling
-│   ├── sovereign-ops/           # Hardware diagnostics, system control
 │   └── ...
 │
 ├── plugins/                     # All plugins, organized by category
@@ -44,7 +43,7 @@ cluaiz-skills/
 │   └── ...
 │
 ├── souls/                       # Core personas and behavior bundles
-│   ├── sovereign-hacker/        # Example soul identity
+│   ├── hacker/                  # Example soul identity
 │   │   └── SOUL.md              
 │   └── ...
 │
@@ -71,7 +70,7 @@ graph TD
     U["👤 User Input"] --> B["🧠 Skill Router"]
     B -->|Semantic Match| R["📄 SKILL.md"]
 
-    R --> NF["🏗️ Sovereign Dispatcher"]
+    R --> NF["🏗️ Dispatcher"]
 
     subgraph "NATIVE EXECUTION ENGINE"
         NF -->|Memory Map| S["🧠 KV-Cache State"]
@@ -80,7 +79,7 @@ graph TD
     end
 
     S -->|Inject Context| K["🚀 Inference Core"]
-    K -->|Acceleration| HW["🖥️ Silicon - GPU/NPU/CPU"]
+    K -->|Acceleration| HW["🖥️ Hardware Acceleration"]
 
     BD -->|Execute| K
     H -->|Fetch Data| BD

@@ -1,6 +1,6 @@
 # Contributing to Cluaiz Skills
 
-Thank you for contributing to the Cluaiz Sovereign OS skill ecosystem.
+Thank you for contributing to the Cluaiz skill ecosystem.
 
 ## Pull Request Requirements
 

@@ -6,22 +6,35 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 def parse_frontmatter(file_path):
-    """Extract and parse YAML frontmatter from a markdown file."""
+    """Extract and parse YAML frontmatter or Markdown Table from a markdown file."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
             
-        if not content.startswith('---'):
-            return None
-            
-        # Split by --- and get the second element (the frontmatter)
-        parts = content.split('---')
-        if len(parts) < 3:
-            return None
-            
-        frontmatter_text = parts[1]
-        data = yaml.safe_load(frontmatter_text)
-        return data
+        data = {}
+        
+        # Check for YAML frontmatter
+        if content.startswith('---'):
+            parts = content.split('---')
+            if len(parts) >= 3:
+                frontmatter_text = parts[1]
+                data = yaml.safe_load(frontmatter_text)
+                if data:
+                    return data
+        
+        # Check for Markdown Table at the top
+        lines = content.strip().split('\n')
+        for line in lines:
+            if line.startswith('|') and 'Attribute' not in line and '---' not in line:
+                cols = [c.strip() for c in line.split('|') if c.strip()]
+                if len(cols) >= 2:
+                    key = cols[0].replace('**', '').strip()
+                    val = cols[1].replace('`', '').strip()
+                    data[key] = val
+            elif line.startswith('#'):
+                break # Stop parsing table once heading starts
+                
+        return data if data else None
     except Exception as e:
         print(f"Error parsing {file_path}: {e}")
         return None

@@ -1,6 +1,6 @@
 ---
 name: minimax-music-gen
-version: 1.1.0
+version: 1.0.0
 description: |
   Use when user wants to generate music, songs, or audio tracks. Triggers on any request
   involving music creation, song writing, lyrics generation, audio production, or covers.
@@ -8,7 +8,7 @@ description: |
   a mood/scene and wants background music. Supports multilingual triggers — match equivalent
   phrases in any language. Do NOT use for music playback of existing files, music theory
   questions, or music recommendation without generation.
-author: Cluaiz OS
+author: Cluaiz
 soul_type: STEERING_VECTOR
 
 compatibility:
@@ -270,12 +270,12 @@ command -v mpv || command -v ffplay || command -v afplay
 
 **Play based on detected player (in priority order):**
 
-| Player | Command | Controls |
-|--------|---------|----------|
-| `mpv` (preferred) | `mpv --no-video ~/Music/minimax-gen/<filename>.mp3` | space = pause/resume, q = quit, left/right = seek |
-| `ffplay` | `ffplay -nodisp -autoexit ~/Music/minimax-gen/<filename>.mp3` | q = quit |
-| `afplay` (macOS) | `afplay ~/Music/minimax-gen/<filename>.mp3` | Ctrl+C = stop |
-| None found | Do not attempt playback | Show file path only |
+| Player            | Command                                                       | Controls                                          |
+| ----------------- | ------------------------------------------------------------- | ------------------------------------------------- |
+| `mpv` (preferred) | `mpv --no-video ~/Music/minimax-gen/<filename>.mp3`           | space = pause/resume, q = quit, left/right = seek |
+| `ffplay`          | `ffplay -nodisp -autoexit ~/Music/minimax-gen/<filename>.mp3` | q = quit                                          |
+| `afplay` (macOS)  | `afplay ~/Music/minimax-gen/<filename>.mp3`                   | Ctrl+C = stop                                     |
+| None found        | Do not attempt playback                                       | Show file path only                               |
 
 After starting playback, tell the user (localize all text):
 
@@ -374,13 +374,13 @@ mmx music cover \
 
 ### Optional flags
 
-| Flag | Description |
-|------|-------------|
-| `--seed <number>` | Random seed 0-1000000 for reproducible results |
-| `--channel <n>` | `1` (mono) or `2` (stereo, default) |
-| `--format <fmt>` | `mp3` (default), `wav`, `pcm` |
-| `--sample-rate <hz>` | Sample rate (default: 44100) |
-| `--bitrate <bps>` | Bitrate (default: 256000) |
+| Flag                 | Description                                    |
+| -------------------- | ---------------------------------------------- |
+| `--seed <number>`    | Random seed 0-1000000 for reproducible results |
+| `--channel <n>`      | `1` (mono) or `2` (stereo, default)            |
+| `--format <fmt>`     | `mp3` (default), `wav`, `pcm`                  |
+| `--sample-rate <hz>` | Sample rate (default: 44100)                   |
+| `--bitrate <bps>`    | Bitrate (default: 256000)                      |
 
 ### After generation
 Proceed with normal playback and feedback flow (Step 4 & 5).
@@ -389,16 +389,16 @@ Proceed with normal playback and feedback flow (Step 4 & 5).
 
 ## Error Handling
 
-| Error | Action |
-|-------|--------|
-| mmx not found | `npm install -g mmx-cli` |
-| mmx auth error (exit code 3) | `mmx auth login` |
-| Quota exceeded (exit code 4) | Report quota limit, suggest waiting or upgrading |
-| API timeout (exit code 5) | Retry once, then report failure |
-| Content filter (exit code 10) | Adjust prompt to avoid filtered content |
-| Invalid lyrics format | Auto-fix section markers, warn user |
-| No audio player found | Save file and tell user the path, suggest installing mpv |
-| Network error | Show error detail, suggest checking connection |
+| Error                         | Action                                                   |
+| ----------------------------- | -------------------------------------------------------- |
+| mmx not found                 | `npm install -g mmx-cli`                                 |
+| mmx auth error (exit code 3)  | `mmx auth login`                                         |
+| Quota exceeded (exit code 4)  | Report quota limit, suggest waiting or upgrading         |
+| API timeout (exit code 5)     | Retry once, then report failure                          |
+| Content filter (exit code 10) | Adjust prompt to avoid filtered content                  |
+| Invalid lyrics format         | Auto-fix section markers, warn user                      |
+| No audio player found         | Save file and tell user the path, suggest installing mpv |
+| Network error                 | Show error detail, suggest checking connection           |
 
 ---
 

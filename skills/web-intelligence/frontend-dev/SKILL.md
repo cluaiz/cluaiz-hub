@@ -1,6 +1,6 @@
 ---
 name: frontend-dev
-version: 1.0.1
+version: 1.0.0
 description: |
   Full-stack frontend development combining premium UI design, cinematic animations,
   AI-generated media assets, persuasive copywriting, and visual art. Builds complete,
@@ -8,7 +8,7 @@ description: |
   Use when: building landing pages, marketing sites, product pages, dashboards,
   generating media assets (image/video/audio/music), writing conversion copy,
   creating generative art, or implementing cinematic scroll animations.
-author: Cluaiz OS
+author: Cluaiz
 soul_type: STEERING_VECTOR
 
 compatibility:
@@ -100,13 +100,13 @@ assets/
 
 ### By Framework
 
-| Framework | Asset Location | Component Location |
-|-----------|---------------|-------------------|
-| **Pure HTML** | `./assets/` | N/A (inline or `./js/`) |
-| **React/Next.js** | `public/assets/` | `src/components/` |
-| **Vue/Nuxt** | `public/assets/` | `src/components/` |
-| **Svelte/SvelteKit** | `static/assets/` | `src/lib/components/` |
-| **Astro** | `public/assets/` | `src/components/` |
+| Framework            | Asset Location   | Component Location      |
+| -------------------- | ---------------- | ----------------------- |
+| **Pure HTML**        | `./assets/`      | N/A (inline or `./js/`) |
+| **React/Next.js**    | `public/assets/` | `src/components/`       |
+| **Vue/Nuxt**         | `public/assets/` | `src/components/`       |
+| **Svelte/SvelteKit** | `static/assets/` | `src/lib/components/`   |
+| **Astro**            | `public/assets/` | `src/components/`       |
 
 ### Pure HTML
 
@@ -210,11 +210,11 @@ Run final checklist (see Quality Gates section).
 
 ## 1.1 Baseline Configuration
 
-| Dial | Default | Range |
-|------|---------|-------|
-| DESIGN_VARIANCE | 8 | 1=Symmetry, 10=Asymmetric |
-| MOTION_INTENSITY | 6 | 1=Static, 10=Cinematic |
-| VISUAL_DENSITY | 4 | 1=Airy, 10=Packed |
+| Dial             | Default | Range                     |
+| ---------------- | ------- | ------------------------- |
+| DESIGN_VARIANCE  | 8       | 1=Symmetry, 10=Asymmetric |
+| MOTION_INTENSITY | 6       | 1=Static, 10=Cinematic    |
+| VISUAL_DENSITY   | 4       | 1=Airy, 10=Packed         |
 
 Adapt dynamically based on user requests.
 
@@ -227,14 +227,14 @@ Adapt dynamically based on user requests.
 - **Layout:** `max-w-[1400px] mx-auto` or `max-w-7xl`.
 
 ## 1.3 Design Rules
-| Rule | Directive |
-|------|-----------|
+| Rule       | Directive                                                                                                                                                                              |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Typography | Headlines: `text-4xl md:text-6xl tracking-tighter`. Body: `text-base leading-relaxed max-w-[65ch]`. **NEVER** use Inter — use Geist/Outfit/Satoshi. **NEVER** use Serif on dashboards. |
-| Color | Max 1 accent, saturation < 80%. **NEVER** use AI purple/blue. Stick to one palette. |
-| Layout | **NEVER** use centered heroes when VARIANCE > 4. Force split-screen or asymmetric layouts. |
-| Cards | **NEVER** use generic cards when DENSITY > 7. Use `border-t`, `divide-y`, or spacing. |
-| States | **ALWAYS** implement: Loading (skeleton), Empty, Error, Tactile feedback (`scale-[0.98]`). |
-| Forms | Label above input. Error below. `gap-2` for input blocks. |
+| Color      | Max 1 accent, saturation < 80%. **NEVER** use AI purple/blue. Stick to one palette.                                                                                                    |
+| Layout     | **NEVER** use centered heroes when VARIANCE > 4. Force split-screen or asymmetric layouts.                                                                                             |
+| Cards      | **NEVER** use generic cards when DENSITY > 7. Use `border-t`, `divide-y`, or spacing.                                                                                                  |
+| States     | **ALWAYS** implement: Loading (skeleton), Empty, Error, Tactile feedback (`scale-[0.98]`).                                                                                             |
+| Forms      | Label above input. Error below. `gap-2` for input blocks.                                                                                                                              |
 
 ## 1.4 Anti-Slop Techniques
 
@@ -245,24 +245,24 @@ Adapt dynamically based on user requests.
 - **Stagger:** Use `staggerChildren` or CSS `animation-delay: calc(var(--index) * 100ms)`
 
 ## 1.5 Forbidden Patterns
-| Category | Banned |
-|----------|--------|
-| Visual | Neon glows, pure black (#000), oversaturated accents, gradient text on headers, custom cursors |
-| Typography | Inter font, oversized H1s, Serif on dashboards |
-| Layout | 3-column equal card rows, floating elements with awkward gaps |
-| Components | Default shadcn/ui without customization |
+| Category   | Banned                                                                                         |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| Visual     | Neon glows, pure black (#000), oversaturated accents, gradient text on headers, custom cursors |
+| Typography | Inter font, oversized H1s, Serif on dashboards                                                 |
+| Layout     | 3-column equal card rows, floating elements with awkward gaps                                  |
+| Components | Default shadcn/ui without customization                                                        |
 
 ## 1.6 Creative Arsenal
 
-| Category | Patterns |
-|----------|----------|
-| Navigation | Dock magnification, Magnetic button, Gooey menu, Dynamic island, Radial menu, Speed dial, Mega menu |
-| Layout | Bento grid, Masonry, Chroma grid, Split-screen scroll, Curtain reveal |
-| Cards | Parallax tilt, Spotlight border, Glassmorphism, Holographic foil, Swipe stack, Morphing modal |
-| Scroll | Sticky stack, Horizontal hijack, Locomotive sequence, Zoom parallax, Progress path, Liquid swipe |
-| Gallery | Dome gallery, Coverflow, Drag-to-pan, Accordion slider, Hover trail, Glitch effect |
-| Text | Kinetic marquee, Text mask reveal, Scramble effect, Circular path, Gradient stroke, Kinetic grid |
-| Micro | Particle explosion, Pull-to-refresh, Skeleton shimmer, Directional hover, Ripple click, SVG draw, Mesh gradient, Lens blur |
+| Category   | Patterns                                                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Navigation | Dock magnification, Magnetic button, Gooey menu, Dynamic island, Radial menu, Speed dial, Mega menu                        |
+| Layout     | Bento grid, Masonry, Chroma grid, Split-screen scroll, Curtain reveal                                                      |
+| Cards      | Parallax tilt, Spotlight border, Glassmorphism, Holographic foil, Swipe stack, Morphing modal                              |
+| Scroll     | Sticky stack, Horizontal hijack, Locomotive sequence, Zoom parallax, Progress path, Liquid swipe                           |
+| Gallery    | Dome gallery, Coverflow, Drag-to-pan, Accordion slider, Hover trail, Glitch effect                                         |
+| Text       | Kinetic marquee, Text mask reveal, Scramble effect, Circular path, Gradient stroke, Kinetic grid                           |
+| Micro      | Particle explosion, Pull-to-refresh, Skeleton shimmer, Directional hover, Ripple click, SVG draw, Mesh gradient, Lens blur |
 
 ## 1.7 Bento Paradigm
 
@@ -292,14 +292,14 @@ When brand styling is active:
 
 ## 2.1 Tool Selection Matrix
 
-| Need | Tool |
-|------|------|
-| UI enter/exit/layout | **Framer Motion** — `AnimatePresence`, `layoutId`, springs |
-| Scroll storytelling (pin, scrub) | **GSAP + ScrollTrigger** — frame-accurate control |
-| Looping icons | **Lottie** — lazy-load (~50KB) |
-| 3D/WebGL | **Three.js / R3F** — isolated `<Canvas>`, own `"use client"` boundary |
-| Hover/focus states | **CSS only** — zero JS cost |
-| Native scroll-driven | **CSS** — `animation-timeline: scroll()` |
+| Need                             | Tool                                                                  |
+| -------------------------------- | --------------------------------------------------------------------- |
+| UI enter/exit/layout             | **Framer Motion** — `AnimatePresence`, `layoutId`, springs            |
+| Scroll storytelling (pin, scrub) | **GSAP + ScrollTrigger** — frame-accurate control                     |
+| Looping icons                    | **Lottie** — lazy-load (~50KB)                                        |
+| 3D/WebGL                         | **Three.js / R3F** — isolated `<Canvas>`, own `"use client"` boundary |
+| Hover/focus states               | **CSS only** — zero JS cost                                           |
+| Native scroll-driven             | **CSS** — `animation-timeline: scroll()`                              |
 
 **Conflict Rules [MANDATORY]:**
 - NEVER mix GSAP + Framer Motion in same component
@@ -308,30 +308,30 @@ When brand styling is active:
 
 ## 2.2 Intensity Scale
 
-| Level | Techniques |
-|-------|------------|
-| 1-2 Subtle | CSS transitions only, 150-300ms |
-| 3-4 Smooth | CSS keyframes + Framer animate, stagger ≤3 items |
-| 5-6 Fluid | `whileInView`, magnetic hover, parallax tilt |
-| 7-8 Cinematic | GSAP ScrollTrigger, pinned sections, horizontal hijack |
+| Level          | Techniques                                               |
+| -------------- | -------------------------------------------------------- |
+| 1-2 Subtle     | CSS transitions only, 150-300ms                          |
+| 3-4 Smooth     | CSS keyframes + Framer animate, stagger ≤3 items         |
+| 5-6 Fluid      | `whileInView`, magnetic hover, parallax tilt             |
+| 7-8 Cinematic  | GSAP ScrollTrigger, pinned sections, horizontal hijack   |
 | 9-10 Immersive | Full scroll sequences, Three.js particles, WebGL shaders |
 
 ## 2.3 Animation Recipes
 
 See `references/motion-recipes.md` for full code. Summary:
 
-| Recipe | Tool | Use For |
-|--------|------|---------|
-| Scroll Reveal | Framer | Fade+slide on viewport entry |
-| Stagger Grid | Framer | Sequential list animations |
-| Pinned Timeline | GSAP | Horizontal scroll with pinning |
-| Tilt Card | Framer | Mouse-tracking 3D perspective |
-| Magnetic Button | Framer | Cursor-attracted buttons |
-| Text Scramble | Vanilla | Matrix-style decode effect |
-| SVG Path Draw | CSS | Scroll-linked path animation |
-| Horizontal Scroll | GSAP | Vertical-to-horizontal hijack |
-| Particle Background | R3F | Decorative WebGL particles |
-| Layout Morph | Framer | Card-to-modal expansion |
+| Recipe              | Tool    | Use For                        |
+| ------------------- | ------- | ------------------------------ |
+| Scroll Reveal       | Framer  | Fade+slide on viewport entry   |
+| Stagger Grid        | Framer  | Sequential list animations     |
+| Pinned Timeline     | GSAP    | Horizontal scroll with pinning |
+| Tilt Card           | Framer  | Mouse-tracking 3D perspective  |
+| Magnetic Button     | Framer  | Cursor-attracted buttons       |
+| Text Scramble       | Vanilla | Matrix-style decode effect     |
+| SVG Path Draw       | CSS     | Scroll-linked path animation   |
+| Horizontal Scroll   | GSAP    | Vertical-to-horizontal hijack  |
+| Particle Background | R3F     | Decorative WebGL particles     |
+| Layout Morph        | Framer  | Card-to-modal expansion        |
 
 ## 2.4 Performance Rules
 **GPU-only properties (ONLY animate these):** `transform`, `opacity`, `filter`, `clip-path`
@@ -353,18 +353,18 @@ See `references/motion-recipes.md` for full code. Summary:
 
 ## 2.5 Springs & Easings
 
-| Feel | Framer Config |
-|------|---------------|
+| Feel   | Framer Config                 |
+| ------ | ----------------------------- |
 | Snappy | `stiffness: 300, damping: 30` |
 | Smooth | `stiffness: 150, damping: 20` |
 | Bouncy | `stiffness: 100, damping: 10` |
-| Heavy | `stiffness: 60, damping: 20` |
+| Heavy  | `stiffness: 60, damping: 20`  |
 
-| CSS Easing | Value |
-|------------|-------|
-| Smooth decel | `cubic-bezier(0.16, 1, 0.3, 1)` |
-| Smooth accel | `cubic-bezier(0.7, 0, 0.84, 0)` |
-| Elastic | `cubic-bezier(0.34, 1.56, 0.64, 1)` |
+| CSS Easing   | Value                               |
+| ------------ | ----------------------------------- |
+| Smooth decel | `cubic-bezier(0.16, 1, 0.3, 1)`     |
+| Smooth accel | `cubic-bezier(0.7, 0, 0.84, 0)`     |
+| Elastic      | `cubic-bezier(0.34, 1.56, 0.64, 1)` |
 
 ## 2.6 Accessibility
 - ALWAYS wrap motion in `prefers-reduced-motion` check
@@ -388,12 +388,12 @@ npm install three @react-three/fiber @react-three/drei  # 3D (lazy-load)
 
 ## 3.1 Scripts
 
-| Type | Script | Pattern |
-|------|--------|---------|
-| TTS | `scripts/minimax_tts.py` | Sync |
-| Music | `scripts/minimax_music.py` | Sync |
+| Type  | Script                     | Pattern                          |
+| ----- | -------------------------- | -------------------------------- |
+| TTS   | `scripts/minimax_tts.py`   | Sync                             |
+| Music | `scripts/minimax_music.py` | Sync                             |
 | Video | `scripts/minimax_video.py` | Async (create → poll → download) |
-| Image | `scripts/minimax_image.py` | Sync |
+| Image | `scripts/minimax_image.py` | Sync                             |
 
 Env: `MINIMAX_API_KEY` (required).
 
@@ -407,17 +407,17 @@ Env: `MINIMAX_API_KEY` (required).
 
 ## 3.3 Preset Shortcuts
 
-| Shortcut | Spec |
-|----------|------|
-| `hero` | 16:9, cinematic, text-safe |
-| `thumb` | 1:1, centered subject |
-| `icon` | 1:1, flat, clean background |
-| `avatar` | 1:1, portrait, circular crop ready |
-| `banner` | 21:9, OG/social |
-| `bg-video` | 768P, 6s, `[Static shot]` |
-| `video-hd` | 1080P, 6s |
-| `bgm` | 30s, no vocals, loopable |
-| `tts` | MiniMax HD, MP3 |
+| Shortcut   | Spec                               |
+| ---------- | ---------------------------------- |
+| `hero`     | 16:9, cinematic, text-safe         |
+| `thumb`    | 1:1, centered subject              |
+| `icon`     | 1:1, flat, clean background        |
+| `avatar`   | 1:1, portrait, circular crop ready |
+| `banner`   | 21:9, OG/social                    |
+| `bg-video` | 768P, 6s, `[Static shot]`          |
+| `video-hd` | 1080P, 6s                          |
+| `bgm`      | 30s, no vocals, loopable           |
+| `tts`      | MiniMax HD, MP3                    |
 
 ## 3.4 Reference
 
@@ -463,15 +463,15 @@ BENEFIT:    What customer gains
 
 ## 4.3 Headlines
 
-| Formula | Example |
-|---------|---------|
-| Promise | "Double open rates in 30 days" |
-| Question | "Still wasting 10 hours/week?" |
-| How-To | "How to automate your pipeline" |
-| Number | "7 mistakes killing conversions" |
-| Negative | "Stop losing leads" |
-| Curiosity | "The one change that tripled bookings" |
-| Transformation | "From 50 to 500 leads" |
+| Formula        | Example                                |
+| -------------- | -------------------------------------- |
+| Promise        | "Double open rates in 30 days"         |
+| Question       | "Still wasting 10 hours/week?"         |
+| How-To         | "How to automate your pipeline"        |
+| Number         | "7 mistakes killing conversions"       |
+| Negative       | "Stop losing leads"                    |
+| Curiosity      | "The one change that tripled bookings" |
+| Transformation | "From 50 to 500 leads"                 |
 
 Be specific. Lead with outcome, not method.
 
@@ -487,24 +487,24 @@ Place: above fold, after value, multiple on long pages.
 
 ## 4.5 Emotional Triggers
 
-| Trigger | Example |
-|---------|---------|
-| FOMO | "Only 3 spots left" |
+| Trigger      | Example                                    |
+| ------------ | ------------------------------------------ |
+| FOMO         | "Only 3 spots left"                        |
 | Fear of loss | "Every day without this, you're losing $X" |
-| Status | "Join 10,000+ top agencies" |
-| Ease | "Set it up once. Forget forever." |
-| Frustration | "Tired of tools that deliver nothing?" |
-| Hope | "Yes, you CAN hit $10K MRR" |
+| Status       | "Join 10,000+ top agencies"                |
+| Ease         | "Set it up once. Forget forever."          |
+| Frustration  | "Tired of tools that deliver nothing?"     |
+| Hope         | "Yes, you CAN hit $10K MRR"                |
 
 ## 4.6 Objection Handling
 
-| Objection | Response |
-|-----------|----------|
-| Too expensive | Show ROI: "Pays for itself in 2 weeks" |
-| Won't work for me | Social proof from similar customer |
-| No time | "Setup takes 10 minutes" |
-| What if it fails | "30-day money-back guarantee" |
-| Need to think | Urgency/scarcity |
+| Objection         | Response                               |
+| ----------------- | -------------------------------------- |
+| Too expensive     | Show ROI: "Pays for itself in 2 weeks" |
+| Won't work for me | Social proof from similar customer     |
+| No time           | "Setup takes 10 minutes"               |
+| What if it fails  | "30-day money-back guarantee"          |
+| Need to think     | Urgency/scarcity                       |
 
 Place in FAQ, testimonials, near CTA.
 
@@ -520,9 +520,9 @@ Philosophy-first workflow. Two output modes.
 
 ## 5.1 Output Modes
 
-| Mode | Output | When |
-|------|--------|------|
-| Static | PDF/PNG | Posters, print, design assets |
+| Mode        | Output       | When                                  |
+| ----------- | ------------ | ------------------------------------- |
+| Static      | PDF/PNG      | Posters, print, design assets         |
 | Interactive | HTML (p5.js) | Generative art, explorable variations |
 
 ## 5.2 Workflow

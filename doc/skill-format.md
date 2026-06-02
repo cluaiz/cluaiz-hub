@@ -20,7 +20,7 @@ Installed skill metadata (written by the CLI):
 ## `SKILL.md`
 
 Markdown with YAML frontmatter. The frontmatter declares metadata. The Markdown
-body is the agent's system prompt — it tells the Sovereign Agent what the skill
+body is the agent's system prompt — it tells the agent what the skill
 does, when to activate it, how to use its tools, and what rules to follow.
 
 ## Frontmatter metadata
@@ -43,7 +43,7 @@ id: cluaiz.skill.ops.storage
 name: storage-probe
 version: 1.0.0
 description: Hardware-level storage health and speed benchmarking.
-author: Cluaiz OS
+author: Cluaiz
 soul_type: STEERING_VECTOR
 
 compatibility:
@@ -117,7 +117,7 @@ All paths are relative to the skill folder.
 ## The agent prompt (Markdown body)
 
 Everything below the closing `---` of the frontmatter is the agent prompt. This
-is loaded directly into the Sovereign Agent's context window.
+is loaded directly into the agent's context window.
 
 **This is not a user-facing README.** Write it as direct instructions to the AI.
 
@@ -191,7 +191,7 @@ Text file types: `.md`, `.json`, `.yaml`, `.yml`, `.toml`, `.js`, `.ts`, `.py`,
 ## Naming conventions
 
 - Skill directory names: lowercase `kebab-case` (e.g., `pdf-extractor`, `code-auditor`).
-- Category directory names: lowercase `kebab-case` (e.g., `dev-suite`, `sovereign-ops`).
+- Category directory names: lowercase `kebab-case` (e.g., `dev-suite`, `system-ops`).
 - `SKILL.md` filename: uppercase `SKILL.md` preferred, lowercase `skill.md` accepted.
 
 ## Versioning
