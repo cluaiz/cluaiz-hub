@@ -1,12 +1,12 @@
 {
   "_meta": {
-    "updated": "2026-06-02T05:04:06.286175Z"
+    "updated": "2026-06-02T05:52:38.180628Z"
   },
   "skills": {
     "minimax-music-gen": {
-      "latest": "1.1.0",
+      "latest": "1.0.0",
       "versions": {
-        "1.1.0": "https://github.com/cluaiz/skills/releases/download/minimax-music-gen-latest/minimax-music-gen-v1.1.0.zip"
+        "1.0.0": "https://github.com/cluaiz/skills/releases/download/minimax-music-gen-latest/minimax-music-gen-v1.0.0.zip"
       }
     },
     "frontend-dev": {
