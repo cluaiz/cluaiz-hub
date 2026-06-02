@@ -29,8 +29,6 @@ triggers:
   entropy_threshold: 0.85
 
 links:
-  wasm: "./logic.wasm"
-  kvcache: "./state.kv-cache"
   scripts: "./scripts/"
   templates: "./templates/"
   references: "./references/"

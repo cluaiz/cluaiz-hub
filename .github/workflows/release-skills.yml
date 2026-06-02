@@ -59,17 +59,10 @@ jobs:
                 ZIP_NAME="${NAME}-v${VERSION}.zip"
                 RELEASE_TAG="${NAME}-latest"
                 
-                # --- BUILD STEP (MOCK FOR NOW) ---
-                echo "Building native binaries and tensors..."
-                # In the future, this will run `cargo build --release --target wasm32-wasi`
-                printf "\\x00asm\\x01\\x00\\x00\\x00" > "$DIR/logic.wasm"
-                # In the future, this will run the KV cache generation ML script
-                echo '{"status": "ready", "version": "'$VERSION'"}' > "$DIR/state.kv-cache"
-                
-                # Zip the directory
+                # Zip the directory (only real files that exist)
                 echo "Zipping $DIR to $ZIP_NAME..."
                 cd "$DIR"
-                zip -r "$GITHUB_WORKSPACE/$ZIP_NAME" .
+                zip -r "$GITHUB_WORKSPACE/$ZIP_NAME" . -x "*.DS_Store"
                 cd -
                 
                 # Create or Update Release
