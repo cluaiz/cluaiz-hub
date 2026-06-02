@@ -43,9 +43,13 @@ def scan_directory(base_path, expected_file="SKILL.md", item_type="skill"):
             frontmatter = parse_frontmatter(item_path / expected_file)
             if frontmatter and 'name' in frontmatter:
                 name = frontmatter['name']
+                version = str(frontmatter.get('version', '1.0.0'))
+                direct_url = f"https://github.com/cluaiz/skills/releases/download/{name}-latest/{name}-v{version}.zip"
                 items[name] = {
-                    "latest": str(frontmatter.get('version', '1.0.0')),
-                    "url_template": "https://github.com/cluaiz/skills/releases/download/{name}-latest/{name}-v{version}.zip"
+                    "latest": version,
+                    "versions": {
+                        version: direct_url
+                    }
                 }
             continue
             
@@ -58,9 +62,16 @@ def scan_directory(base_path, expected_file="SKILL.md", item_type="skill"):
                 frontmatter = parse_frontmatter(md_file)
                 if frontmatter and 'name' in frontmatter:
                     name = frontmatter['name']
+                    version = str(frontmatter.get('version', '1.0.0'))
+                    
+                    # Direct URL instead of template
+                    direct_url = f"https://github.com/cluaiz/skills/releases/download/{name}-latest/{name}-v{version}.zip"
+                    
                     items[name] = {
-                        "latest": str(frontmatter.get('version', '1.0.0')),
-                        "url_template": "https://github.com/cluaiz/skills/releases/download/{name}-latest/{name}-v{version}.zip"
+                        "latest": version,
+                        "versions": {
+                            version: direct_url
+                        }
                     }
                     
     return items
