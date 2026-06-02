@@ -1,0 +1,92 @@
+name: Release Skills
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'skills/**'
+      - 'plugins/**'
+      - 'souls/**'
+  workflow_dispatch:
+
+jobs:
+  release-and-registry:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed to get changed files
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Process Changed Skills
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get list of changed files
+          CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} || echo "")
+          
+          # Find all unique skill directories that changed
+          CHANGED_DIRS=$(echo "$CHANGED_FILES" | grep -E "^(skills|plugins|souls)/" | cut -d/ -f1-3 | sort -u || echo "")
+          
+          if [ -z "$CHANGED_DIRS" ]; then
+            echo "No skills changed."
+          else
+            for DIR in $CHANGED_DIRS; do
+              if [ -d "$DIR" ] && [ -f "$DIR/SKILL.md" ] || [ -f "$DIR/SOUL.md" ]; then
+                echo "Processing $DIR..."
+                
+                # Extract metadata
+                SKILL_FILE=$DIR/SKILL.md
+                if [ ! -f "$SKILL_FILE" ]; then SKILL_FILE=$DIR/SOUL.md; fi
+                
+                NAME=$(grep -E "^name:" "$SKILL_FILE" | awk '{print $2}')
+                VERSION=$(grep -E "^version:" "$SKILL_FILE" | awk '{print $2}')
+                
+                if [ -z "$NAME" ] || [ -z "$VERSION" ]; then
+                  echo "Skipping $DIR: Missing name or version."
+                  continue
+                fi
+                
+                ZIP_NAME="${NAME}-v${VERSION}.zip"
+                RELEASE_TAG="${NAME}-latest"
+                
+                # Zip the directory
+                echo "Zipping $DIR to $ZIP_NAME..."
+                cd "$DIR"
+                zip -r "../../$ZIP_NAME" .
+                cd -
+                
+                # Create or Update Release
+                echo "Uploading to Release $RELEASE_TAG..."
+                # Check if release exists
+                if ! gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
+                  echo "Creating new release $RELEASE_TAG..."
+                  gh release create "$RELEASE_TAG" --title "$NAME Latest Updates" --notes "Automated release bundle for $NAME"
+                fi
+                
+                # Upload asset (clobber if exists)
+                gh release upload "$RELEASE_TAG" "$ZIP_NAME" --clobber
+              fi
+            done
+          fi
+
+      - name: Generate registry.json
+        run: python scripts/build_registry.py
+
+      - name: Commit and push registry updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update registry.json with new releases [skip ci]"
+          file_pattern: "registry.json"

@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "updated": "2026-06-02T04:30:36.318217Z"
+  },
+  "skills": {
+    "frontend-dev": {
+      "latest": "1.0.0",
+      "url_template": "https://github.com/cluaiz/skills/releases/download/{name}-latest/{name}-v{version}.zip"
+    }
+  },
+  "plugins": {},
+  "souls": {}
+}
