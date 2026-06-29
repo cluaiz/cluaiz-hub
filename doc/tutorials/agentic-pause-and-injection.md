@@ -1,21 +1,21 @@
 ---
 title: "Agentic Pause & Mid-Layer Injection"
-description: "How the Cluaize Engine halts generation, injects tool schemas, and resumes inference via C-FFI interception."
+description: "How the cluaiz Engine halts generation, injects tool schemas, and resumes inference via C-FFI interception."
 category: "Extensions"
 ---
 
 # Agentic Pause & Mid-Layer Injection
 
-The Cluaize Engine does not rely on standard REST API-based tool calling for native extensions. Instead, it uses a highly optimized C-FFI interception mechanism known as an **Agentic Pause** to dynamically inject instructions (like `SKILL.md`) into the AI's context window exactly when needed.
+The cluaiz Engine does not rely on standard REST API-based tool calling for native extensions. Instead, it uses a highly optimized C-FFI interception mechanism known as an **Agentic Pause** to dynamically inject instructions (like `SKILL.md`) into the AI's context window exactly when needed.
 
-This document explains the reality of how AI triggers extensions in Cluaize.
+This document explains the reality of how AI triggers extensions in cluaiz.
 
 ## 1. The Trigger Token
 
 When the AI determines it needs external data (e.g., searching the web), it does not emit a JSON payload or write raw CEL code immediately. Instead, it emits a specific, raw native token in its generation stream:
 
 ```
-<TRIGGER:extension:cluaize-search>
+<TRIGGER:extension:cluaiz-search>
 ```
 
 This token is the core signaling mechanism.
@@ -29,11 +29,11 @@ The generation halts. This is the **Agentic Pause**. The user's screen pauses, a
 ## 3. Mid-Layer Dual-Cache Injection
 
 Once paused, the Engine performs the following operations without the LLM's knowledge:
-1. **Registry Lookup:** It queries the `MasterRegistry` for the requested extension (e.g., `cluaize-search`).
+1. **Registry Lookup:** It queries the `MasterRegistry` for the requested extension (e.g., `cluaiz-search`).
 2. **Schema & Manual Fetch:** It reads the `manifest-extension.yaml` and the `SKILL.md` files directly from the extension's domain folder.
 3. **Prompt Mutation:** The Engine modifies the ongoing conversation prompt, appending the schema:
    ```text
-   [SYSTEM INJECTION: TOOL SCHEMA FOR cluaize-search]
+   [SYSTEM INJECTION: TOOL SCHEMA FOR cluaiz-search]
    --- AI SKILL MANUAL ---
    <contents of SKILL.md>
    [SYSTEM: RESUME GENERATION]
@@ -48,4 +48,4 @@ The AI wakes up from the pause, reads the newly injected `SKILL.md`, and now und
 
 ## Why This Architecture?
 
-By keeping `SKILL.md` out of the initial system prompt, Cluaize saves hundreds of context tokens. The AI only learns about an extension *after* it attempts to trigger it, ensuring zero VRAM waste for tools that are not used in a given session.
+By keeping `SKILL.md` out of the initial system prompt, cluaiz saves hundreds of context tokens. The AI only learns about an extension *after* it attempts to trigger it, ensuring zero VRAM waste for tools that are not used in a given session.

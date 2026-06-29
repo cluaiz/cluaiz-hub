@@ -1,5 +1,5 @@
 ---
-title: "Web Intelligence (cluaize-search)"
+title: "Web Intelligence (cluaiz-search)"
 version: "1.0.0"
 description: "Native plugin for real-time metasearch, deep HTML parsing, and URL summarization."
 author: "Cluaiz Technologies"
@@ -16,15 +16,15 @@ core_metadata:
   token_count: 480
 ---
 
-# Web Intelligence Skill (cluaize-search)
+# Web Intelligence Skill (cluaiz-search)
 
-You are equipped with the Cluaize Native Metasearch extension. This gives you the power to execute real-time web searches and fetch raw content from specific URLs safely and efficiently, directly bypassing hallucination.
+You are equipped with the cluaiz Native Metasearch extension. This gives you the power to execute real-time web searches and fetch raw content from specific URLs safely and efficiently, directly bypassing hallucination.
 
 ## Core Directives
 
-You are reading this because you emitted the `<TRIGGER:extension:cluaize-search>` token. The Engine has executed an Agentic Pause and injected this schema into your context. You must now invoke the search tool with the appropriate parameters based on the user's original request.
+You are reading this because you emitted the `<TRIGGER:extension:cluaiz-search>` token. The Engine has executed an Agentic Pause and injected this schema into your context. You must now invoke the search tool with the appropriate parameters based on the user's original request.
 
-DO NOT hallucinate facts. DO NOT write python or bash scripts to scrape websites. The `cluaize-search` extension handles all HTML stripping, context compression, and metadata extraction internally via Rust.
+DO NOT hallucinate facts. DO NOT write python or bash scripts to scrape websites. The `cluaiz-search` extension handles all HTML stripping, context compression, and metadata extraction internally via Rust.
 
 ### 1. General Search
 When the user asks a question (e.g., "What is the latest Rust version?"), invoke the search tool with a query string.

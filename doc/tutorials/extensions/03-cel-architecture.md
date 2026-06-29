@@ -6,7 +6,7 @@ category: "Tutorials"
 
 # 3. The CEL Architecture: Pros, Cons, and Usage
 
-A common point of confusion is the **CEL (Cluaize Execution Language)**. Developers often ask: *"Should my extension parse CEL to get its settings?"*
+A common point of confusion is the **CEL (cluaiz Execution Language)**. Developers often ask: *"Should my extension parse CEL to get its settings?"*
 
 **Short Answer:** No. Extensions never parse CEL.
 

@@ -1,5 +1,5 @@
 # =====================================================================
-# CLUAIZE PLUGIN MANIFEST (manifest-plugin.yaml)
+# cluaiz PLUGIN MANIFEST (manifest-plugin.yaml)
 #
 # PURPOSE: Configures a "Plugin" which is pure muscle (compiled WASM/C++).
 # A plugin has NO `SKILL.md` (no AI prompt). It executes blindly when called.
@@ -7,7 +7,7 @@
 
 # [FIXED SCHEMA] The exact unique name of this plugin in the ecosystem. 
 # Dynamic Value Example: "image-resizer", "fast-math"
-name: "cluaize-math-accelerator"
+name: "cluaiz-math-accelerator"
 
 # [FIXED SCHEMA] Semantic versioning for updates.
 # Dynamic Value Example: "1.0.0", "2.1.3"
@@ -40,9 +40,9 @@ activation:
   lazy_load: true
   
   # [FIXED SCHEMA] List of event strings that trigger the Engine to load this plugin.
-  # Dynamic Value: "on_command:use plugin::cluaize-math-accelerator"
+  # Dynamic Value: "on_command:use plugin::cluaiz-math-accelerator"
   trigger_on: 
-    - "on_command:use plugin::cluaize-math-accelerator"
+    - "on_command:use plugin::cluaiz-math-accelerator"
 
 permissions:
   # [OPTIONAL] Hard RAM limit (in MB). The Engine will OOM kill the WASM if exceeded.
@@ -114,7 +114,7 @@ execution:
   envelope: "WASM"
   
   # [FIXED SCHEMA] The exported C-language function name. The Engine will call this.
-  entry_point: "cluaize_entry"
+  entry_point: "cluaiz_entry"
   
   # [FIXED SCHEMA] How to serialize the data. "MsgPack" or "JSON".
   payload_format: "MsgPack"

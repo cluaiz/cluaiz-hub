@@ -1,11 +1,11 @@
-use cluaize_search::execute_cel;
+use cluaiz_search::execute_cel;
 use serde_json::Value;
 use std::ffi::{CStr, CString};
 use std::io::{self, Write};
 
 fn main() {
     println!("==================================================");
-    println!("🔍 Cluaize Search Extension - Interactive Test 🔍");
+    println!("🔍 cluaiz Search Extension - Interactive Test 🔍");
     println!("==================================================");
 
     loop {
@@ -32,7 +32,7 @@ fn main() {
             "query"
         };
 
-        // In a real execution, the Cluaize Engine passes these dynamically via the C-Pointer FFI.
+        // In a real execution, the cluaiz Engine passes these dynamically via the C-Pointer FFI.
         // Since this is a standalone test, we act as the Engine and mock the payload.
         let think_mode = "Auto";
         let response_length = "auto";
@@ -74,7 +74,7 @@ fn main() {
 
         let result_c_str = unsafe { CStr::from_ptr(result_ptr) };
         let result_str = result_c_str.to_str().unwrap().to_string();
-        cluaize_search::free_string(result_ptr);
+        cluaiz_search::free_string(result_ptr);
 
         match serde_json::from_str::<Value>(&result_str) {
             Ok(parsed) => {

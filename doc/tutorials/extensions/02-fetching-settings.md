@@ -6,7 +6,7 @@ category: "Tutorials"
 
 # 2. Fetching Settings & Configurations
 
-In traditional software, your plugin might read a `.json` file from the disk to get its settings. **In Cluaize, this is strictly forbidden.** Extensions operate in a secure boundary and should never perform blind disk I/O to read Engine configs.
+In traditional software, your plugin might read a `.json` file from the disk to get its settings. **In cluaiz, this is strictly forbidden.** Extensions operate in a secure boundary and should never perform blind disk I/O to read Engine configs.
 
 Instead, you **request** what you need using a `manifest-extension.yaml` file, and the Engine injects it directly into your payload.
 

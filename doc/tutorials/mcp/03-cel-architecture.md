@@ -1,6 +1,6 @@
 ---
 title: "CEL vs MCP Execution"
-description: "How the Cluaize Engine routes CEL scripts into standard MCP JSON-RPC streams."
+description: "How the cluaiz Engine routes CEL scripts into standard MCP JSON-RPC streams."
 category: "Tutorials"
 ---
 

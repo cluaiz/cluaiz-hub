@@ -6,18 +6,18 @@ category: "Tutorials"
 
 # 4. Local Testing with IPC Named Pipes
 
-When developing an extension, booting up the entire Cluaize LLM inference engine just to see if your C-Pointer logic works is extremely inefficient. 
+When developing an extension, booting up the entire cluaiz LLM inference engine just to see if your C-Pointer logic works is extremely inefficient. 
 
-Instead, you should test your extension locally using **Named Pipes (IPC)**. The Cluaize Engine daemon exposes an IPC pipe that allows you to simulate the exact payload your extension will receive.
+Instead, you should test your extension locally using **Named Pipes (IPC)**. The cluaiz Engine daemon exposes an IPC pipe that allows you to simulate the exact payload your extension will receive.
 
 ---
 
 ## Step 1: Start the Engine Daemon
 
-Before running tests, ensure the Cluaize core engine is running in background server mode. This activates the IPC Pipe.
+Before running tests, ensure the cluaiz core engine is running in background server mode. This activates the IPC Pipe.
 
 ```bash
-cd Cluaize/
+cd cluaiz/
 cargo run serve
 ```
 
@@ -33,9 +33,9 @@ use tokio::net::windows::named_pipe::ClientOptions;
 
 #[tokio::test]
 async fn test_fetch_booster_settings() {
-    // 1. Connect directly to the Cluaize Engine's local pipe
+    // 1. Connect directly to the cluaiz Engine's local pipe
     let mut client = ClientOptions::new()
-        .open(r"\\.\pipe\cluaize_engine_pipe")
+        .open(r"\\.\pipe\cluaiz_engine_pipe")
         .expect("Engine must be running via 'cargo run serve'");
 
     // 2. Send a mock payload simulating the Engine's C-Pointer pass
@@ -76,7 +76,7 @@ async fn test_fetch_booster_settings() {
 
 ```mermaid
 flowchart TD
-    A["cargo test (integration_test.rs)"] -->|Writes JSON| B["Named Pipe (cluaize_engine_pipe)"]
+    A["cargo test (integration_test.rs)"] -->|Writes JSON| B["Named Pipe (cluaiz_engine_pipe)"]
     B -->|Bypasses AST/Lexer| C["Engine Storage Layer"]
     C -->|Raw Config Data| B
     B -->|Reads JSON| A

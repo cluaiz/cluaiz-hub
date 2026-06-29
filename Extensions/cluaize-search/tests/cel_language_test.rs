@@ -9,9 +9,9 @@ async fn test_cel_execution_via_engine() {
     // We write a CEL script that actually INVOKES the extension.
     // 1. The CEL Parser reads this string.
     // 2. The Engine packages everything (including system_booster) into a Bincode struct.
-    // 3. The Engine passes the C-Pointer to cluaize-search DLL.
+    // 3. The Engine passes the C-Pointer to cluaiz-search DLL.
     // 4. The search DLL executes and returns a String.
-    let cel_script = "use plugin::cluaize-search -> invoke(query, target: \"Rust test\", search_api_key: \"dummy_key\");";
+    let cel_script = "use plugin::cluaiz-search -> invoke(query, target: \"Rust test\", search_api_key: \"dummy_key\");";
     
     println!("CEL Script: {}", cel_script);
 

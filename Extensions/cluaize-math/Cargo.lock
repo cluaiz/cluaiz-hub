@@ -3,7 +3,7 @@
 version = 4
 
 [[package]]
-name = "cluaize-math-wasm"
+name = "cluaiz-math-wasm"
 version = "0.1.0"
 dependencies = [
  "serde",

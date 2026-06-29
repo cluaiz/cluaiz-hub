@@ -1,4 +1,4 @@
-use cluaize_shared::hardware::governor::HardwareGovernor;
+use cluaiz_shared::hardware::governor::HardwareGovernor;
 use engine_lmdb::env::LmdbEnv;
 use engine_lmdb::ffi::{
     cluaizd_ffi_execute_parameterized, cluaizd_ffi_free_neuron, cluaizd_ffi_read_neuron,
@@ -30,7 +30,7 @@ struct CelResponse {
 }
 
 fn internal_boot_environment() -> Result<String, String> {
-    let base_dir = cluaize_shared::environment::EnvironmentManager::current().global_dir.join("core").join("cluaize-db");
+    let base_dir = cluaiz_shared::environment::EnvironmentManager::current().global_dir.join("core").join("cluaiz-db");
     if !base_dir.exists() {
         let _ = std::fs::create_dir_all(&base_dir);
     }
@@ -245,7 +245,7 @@ pub extern "C" fn execute_cel(payload_ptr: *const ExtensionPayload) -> *mut c_ch
 }
 
 #[no_mangle]
-pub extern "C" fn cluaize_free_payload(ptr: *mut c_char, _len: usize) {
+pub extern "C" fn cluaiz_free_payload(ptr: *mut c_char, _len: usize) {
     if !ptr.is_null() {
         unsafe {
             let _ = CString::from_raw(ptr);

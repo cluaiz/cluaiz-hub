@@ -9,7 +9,7 @@ crate-type = ["cdylib"]
 [dependencies]
 engine-lmdb = { git = "https://github.com/cluaiz/cluaizd.git", branch = "main" }
 cluaizd-types = { git = "https://github.com/cluaiz/cluaizd.git", branch = "main" }
-cluaize-shared = { git = "https://github.com/cluaiz/cluaize.git", branch = "main" }
+cluaiz-shared = { git = "https://github.com/cluaiz/cluaiz.git", branch = "main" }
 sysinfo = "0.30"
 sha2 = "0.10"
 tracing = "0.1.44"

@@ -26,8 +26,8 @@ target/
 node_modules/
 dist/
 
-# Cluaize specific
-.cluaize/
+# Cluaiz specific
+.cluaiz/
 zzz/
 
 # Environment Variables

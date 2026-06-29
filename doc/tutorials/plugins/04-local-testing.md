@@ -6,7 +6,7 @@ category: "Tutorials"
 
 # 4. Local Testing for WASM Plugins
 
-When developing a WASM plugin, testing inside the Cluaize LLM stack is slow and inefficient. You should write unit tests that manually serialize MsgPack and pass it to your `cluaize_entry` function natively.
+When developing a WASM plugin, testing inside the cluaiz LLM stack is slow and inefficient. You should write unit tests that manually serialize MsgPack and pass it to your `cluaiz_entry` function natively.
 
 ---
 
@@ -22,7 +22,7 @@ The best practice is to extract your logic into a pure function and test that na
 use serde_json::json;
 use rmp_serde::Serializer;
 use serde::Serialize;
-use math_plugin::{PayloadType, ExtensionPayload, cluaize_entry};
+use math_plugin::{PayloadType, ExtensionPayload, cluaiz_entry};
 
 #[test]
 fn test_plugin_logic_via_msgpack() {
@@ -44,7 +44,7 @@ fn test_plugin_logic_via_msgpack() {
     };
 
     // 4. Invoke the Entry Point directly
-    let result_ptr = cluaize_entry(&ext_payload as *const _);
+    let result_ptr = cluaiz_entry(&ext_payload as *const _);
     
     // 5. Assert the result
     assert!(!result_ptr.is_null());
@@ -54,9 +54,9 @@ fn test_plugin_logic_via_msgpack() {
     assert_eq!(json_resp["status"], "success");
     
     // 6. Free the memory (CRITICAL)
-    math_plugin::cluaize_free_payload(result_ptr, 0);
+    math_plugin::cluaiz_free_payload(result_ptr, 0);
 }
 ```
 
 > [!TIP]
-> By passing a raw pointer to `cluaize_entry` in a native unit test, you guarantee that when the Engine does the exact same thing across the Wasmtime boundary, your deserialization logic will perfectly parse the MsgPack payload.
+> By passing a raw pointer to `cluaiz_entry` in a native unit test, you guarantee that when the Engine does the exact same thing across the Wasmtime boundary, your deserialization logic will perfectly parse the MsgPack payload.

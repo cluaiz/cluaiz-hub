@@ -1,6 +1,6 @@
 ---
 title: "Connecting MCP Servers"
-description: "How to integrate external Model Context Protocol (MCP) servers with the Cluaize Engine via stdio."
+description: "How to integrate external Model Context Protocol (MCP) servers with the cluaiz Engine via stdio."
 category: "Tutorials"
 ---
 
@@ -8,10 +8,10 @@ category: "Tutorials"
 
 The **Model Context Protocol (MCP)** is a standardized way for AI models to securely connect to external data sources and tools (e.g., GitHub, Slack, local file systems).
 
-Unlike Extensions (Native DLLs) or Plugins (WASM) which run within the Cluaize Engine memory space, MCP servers are **separate processes** (e.g., Node.js or Python scripts).
+Unlike Extensions (Native DLLs) or Plugins (WASM) which run within the cluaiz Engine memory space, MCP servers are **separate processes** (e.g., Node.js or Python scripts).
 
 > [!TIP]
-> **For more details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaize-hub/doc/architecture/skill_architecture.md)
+> **For more details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaiz-hub/doc/architecture/skill_architecture.md)
 > 
 > For **MCP Servers**, creating a `SKILL.md` file is **OPTIONAL but RECOMMENDED**. Providing a `SKILL.md` teaches the AI exactly how to structure the JSON-RPC arguments for the MCP tool and gives the AI context on why it should call the tool.
 
@@ -23,7 +23,7 @@ Because MCP servers run externally, the Engine spawns them as background process
 
 ```mermaid
 flowchart LR
-    A["Cluaize Engine"] -->|stdio JSON-RPC| B["MCP Process Manager"]
+    A["cluaiz Engine"] -->|stdio JSON-RPC| B["MCP Process Manager"]
     B -->|Spawns (npx / python)| C["MCP Server Process"]
     C -->|Reads External APIs| D["GitHub / Slack"]
     D -->|Returns JSON-RPC| B
@@ -32,11 +32,11 @@ flowchart LR
 
 ## Step 1: Defining the MCP Manifest
 
-To register an external MCP server with Cluaize, create a `manifest-mcp.yaml`. Notice how the `execution` block uses `command` and `args` instead of `entry_point`.
+To register an external MCP server with cluaiz, create a `manifest-mcp.yaml`. Notice how the `execution` block uses `command` and `args` instead of `entry_point`.
 
 ```yaml
 # =====================================================================
-# CLUAIZE MCP MANIFEST (manifest-mcp.yaml)
+# cluaiz MCP MANIFEST (manifest-mcp.yaml)
 # =====================================================================
 name: "github-mcp-connector"
 version: "1.0.0"

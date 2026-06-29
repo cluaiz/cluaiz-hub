@@ -87,7 +87,7 @@ Maine samjha: Bhai meri galti hai, main bar-bar tumhari original maang ko misint
 
 YAML se binding key nikalni hai (system_booster.think_mode).
 Us key ka istemaal karke, asli system_booster.json file ko padhna hai, aur usme jo actual value likhi hai (jaise "Off" ya "Auto"), wo test me print karke dikhani hai.
-Kyunki tumne API aur hardcoded paths ke liye mana kiya tha, isliye is baar main file ko read karne ke liye ek dynamic relative path use karunga (jaise std::env::current_dir() ke through workspace root dhundh kar uske andar se .cluaize/engine/config/system_booster.json nikalunga). Ye tareeka completely dynamic hoga, C-drive pe dependent nahi hoga, aur exact JSON value fetch karke print karega!
+Kyunki tumne API aur hardcoded paths ke liye mana kiya tha, isliye is baar main file ko read karne ke liye ek dynamic relative path use karunga (jaise std::env::current_dir() ke through workspace root dhundh kar uske andar se .cluaiz/engine/config/system_booster.json nikalunga). Ye tareeka completely dynamic hoga, C-drive pe dependent nahi hoga, aur exact JSON value fetch karke print karega!
 
 Kya meri samajh is baar finally 100% sahi hai? Haan bolte hi main relative path se actual JSON value extract karke print kar dunga.
 
@@ -127,8 +127,8 @@ yaml_parser_test.rs
  
 9:50 AM
 yaml_parser_test.rs
-…\cluaize-search > cargo test --test yaml_parser_test -- --nocapture
-   Compiling cluaize-search v0.1.0 (C:\Users\Aryan\my\Cluaiz-workspace\Cluaiz-Technologies\cluaize-hub\Extensions\cluaize-search)
+…\cluaiz-search > cargo test --test yaml_parser_test -- --nocapture
+   Compiling cluaiz-search v0.1.0 (C:\Users\Aryan\my\Cluaiz-workspace\Cluaiz-Technologies\cluaiz-hub\Extensions\cluaiz-search)
     Finished `test` profile [unoptimized + debuginfo] target(s) in 1.04s
      Running tests\yaml_parser_test.rs (target\debug\deps\yaml_parser_test-b2ba7b9ff116c03d.exe)
 

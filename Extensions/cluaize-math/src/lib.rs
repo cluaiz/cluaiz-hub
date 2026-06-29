@@ -101,7 +101,7 @@ pub extern "C" fn execute_cel(payload_ptr: *const ExtensionPayload) -> *mut c_ch
 }
 
 #[no_mangle]
-pub extern "C" fn cluaize_free_payload(ptr: *mut c_char, _len: usize) {
+pub extern "C" fn cluaiz_free_payload(ptr: *mut c_char, _len: usize) {
     if !ptr.is_null() {
         unsafe {
             let _ = CString::from_raw(ptr);

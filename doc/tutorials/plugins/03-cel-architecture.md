@@ -18,13 +18,13 @@ A common misconception is that Plugins (WASM) evaluate the AI's CEL scripts dire
 When the AI writes a CEL script, it looks like this:
 
 ```cel
-let $math = use plugin::cluaize-math-accelerator -> invoke(calculate, expr: "10 * 5");
+let $math = use plugin::cluaiz-math-accelerator -> invoke(calculate, expr: "10 * 5");
 ```
 
 ### The Separation of Concerns
 
 1. **The Engine (Rust Daemon)** runs the Lexer, Parser, and AST compilation.
-2. The Engine identifies `cluaize-math-accelerator` and reads its `manifest-plugin.yaml`.
+2. The Engine identifies `cluaiz-math-accelerator` and reads its `manifest-plugin.yaml`.
 3. The Engine converts `{"action": "calculate", "expr": "10 * 5"}` into **MsgPack**.
 4. The Engine instantiates the **Wasmtime VM** and injects the MsgPack pointer.
 5. The WASM Plugin computes `50` and returns it.

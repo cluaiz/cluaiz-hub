@@ -1,16 +1,16 @@
-# 🧩 Cluaize Hub: Extensions
+# 🧩 cluaiz Hub: Extensions
 
-Welcome to the **Extensions** directory of the Cluaize Hub.
+Welcome to the **Extensions** directory of the cluaiz Hub.
 
 ## What is an Extension?
-An Extension is the most powerful module in the Cluaize Ecosystem. It represents the **Sangam (Union) of the Brain and the Muscle**.
+An Extension is the most powerful module in the cluaiz Ecosystem. It represents the **Sangam (Union) of the Brain and the Muscle**.
 
 Unlike standalone plugins (which are just dumb execution binaries) or skills (which are just text instructions), an Extension bundles an entire subsystem together.
 
 ### The Anatomy of an Extension
 Every folder in this directory MUST follow this strict structure:
 ```text
-cluaize-database/          <-- The Extension Name
+cluaiz-database/          <-- The Extension Name
 ├── manifest.json          <-- Capabilities, memory limits, and permissions
 ├── SKILL.md               <-- [THE BRAIN] Teaches the AI how to use this extension
 └── native/                <-- [THE MUSCLE] The actual Rust/C++ plugin logic

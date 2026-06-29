@@ -1,4 +1,4 @@
-name: "cluaize-math"
+name: "cluaiz-math"
 version: "1.0.0"
 description: "Sandboxed WebAssembly mathematical and statistical calculator plugin."
 author: "Cluaiz Technologies"
@@ -10,7 +10,7 @@ discovery:
 activation:
   lazy_load: true
   trigger_on:
-    - "on_command:use plugin::cluaize-math"
+    - "on_command:use plugin::cluaiz-math"
 
 permissions:
   max_memory_mb: 32
@@ -23,4 +23,4 @@ execution:
   envelope: "WASM"
   entry_point: "execute_cel"
   payload_format: "MsgPack"
-  binary_path: ".cluaize/bin/plugin.wasm"
+  binary_path: ".cluaiz/bin/plugin.wasm"

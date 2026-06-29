@@ -1,11 +1,11 @@
-# 🧩 Cluaize DB Extension (Native Bridge)
+# 🧩 cluaiz DB Extension (Native Bridge)
 
-This extension is the **Native Muscle** for the Cluaize Neural Database.
+This extension is the **Native Muscle** for the cluaiz Neural Database.
 
 ## Overview
-Unlike standard scripts, `cluaize-db` is a **Native Extension** that acts as the FFI bridge between the `cluaize` Inference Engine and the `cluaizd` (Zero-Copy LMDB) Database Engine. 
+Unlike standard scripts, `cluaiz-db` is a **Native Extension** that acts as the FFI bridge between the `cluaiz` Inference Engine and the `cluaizd` (Zero-Copy LMDB) Database Engine. 
 
-By placing this inside the `Cluaize Hub`, we successfully decouple the massive storage dependencies from the Core Engine. The Core Engine dynamically loads this extension's `.dll` (`cluaizd_engine.dll`) at runtime to achieve $0\text{-ms}$ memory-mapped FFI database injection.
+By placing this inside the `cluaiz Hub`, we successfully decouple the massive storage dependencies from the Core Engine. The Core Engine dynamically loads this extension's `.dll` (`cluaizd_engine.dll`) at runtime to achieve $0\text{-ms}$ memory-mapped FFI database injection.
 
 ## Project Structure
 - `native/` - The Rust C-FFI crate that statically links against `cluaizd` and `engine-lmdb`. It outputs a `.dll` that the Core Engine dynamically loads.
@@ -15,16 +15,16 @@ By placing this inside the `Cluaize Hub`, we successfully decouple the massive s
 
 ## 🧠 CEL & FFI Execution Lifecycle (`execute_cel` Demo)
 
-Here is a detailed walk-through of how a raw Cluaize Expression Language (CEL) command is parsed, translated, and executed through the dynamic `execute_cel` FFI boundary.
+Here is a detailed walk-through of how a raw cluaiz Expression Language (CEL) command is parsed, translated, and executed through the dynamic `execute_cel` FFI boundary.
 
 ### 1. The CEL Expression Input
 When the LLM or a user runs a database operation, they write standard CEL syntax:
 ```cel
-use extension::cluaize-db -> save(memory_id: "user_session_42", payload: "User logged in from Windows IP")
+use extension::cluaiz-db -> save(memory_id: "user_session_42", payload: "User logged in from Windows IP")
 ```
 
 ### 2. Translation to JSON Payload Envelope
-The Cluaize Engine compiles this CEL AST and serializes it into a standard JSON payload (`CelPayload`). This is what gets sent over the C-FFI pointer boundary to `execute_cel`:
+The cluaiz Engine compiles this CEL AST and serializes it into a standard JSON payload (`CelPayload`). This is what gets sent over the C-FFI pointer boundary to `execute_cel`:
 
 ```json
 {
@@ -48,7 +48,7 @@ let response_raw_ptr = unsafe { execute_cel(json_raw_ptr) };
 ```
 
 ### 4. Inside the DLL: Processing & LMDB Execution
-Inside `lib.rs` of `cluaize-db`, the function does the following:
+Inside `lib.rs` of `cluaiz-db`, the function does the following:
 1. Deserializes the pointer `payload_ptr` into the `CelPayload` struct.
 2. Matches `payload.action.as_str()` -> routes to `internal_save_context()`.
 3. Shards the key `"user_session_42"` using SHA-256 and selects the correct LMDB shard.

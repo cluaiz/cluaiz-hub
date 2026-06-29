@@ -5,10 +5,10 @@ on:
     branches:
       - main
     paths:
-      - 'Extensions/cluaize-search/**'
+      - 'Extensions/cluaiz-search/**'
   pull_request:
     paths:
-      - 'Extensions/cluaize-search/**'
+      - 'Extensions/cluaiz-search/**'
   workflow_dispatch:
 
 jobs:
@@ -30,31 +30,31 @@ jobs:
           toolchain: stable
           
       - name: Build Release Binary
-        working-directory: Extensions/cluaize-search
+        working-directory: Extensions/cluaiz-search
         run: cargo build --release
 
       - name: Upload Artifact (Windows)
         if: matrix.os == 'windows-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: cluaize-search-windows
-          path: Extensions/cluaize-search/target/release/*.dll
+          name: cluaiz-search-windows
+          path: Extensions/cluaiz-search/target/release/*.dll
           if-no-files-found: error
 
       - name: Upload Artifact (Linux)
         if: matrix.os == 'ubuntu-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: cluaize-search-linux
-          path: Extensions/cluaize-search/target/release/*.so
+          name: cluaiz-search-linux
+          path: Extensions/cluaiz-search/target/release/*.so
           if-no-files-found: error
 
       - name: Upload Artifact (macOS)
         if: matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: cluaize-search-macos
-          path: Extensions/cluaize-search/target/release/*.dylib
+          name: cluaiz-search-macos
+          path: Extensions/cluaiz-search/target/release/*.dylib
           if-no-files-found: error
 
   release:
@@ -75,6 +75,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: search-nightly
-          name: Cluaize Search Extension (Nightly)
-          body: "Automatically built native extension binaries for Cluaize Search."
+          name: cluaiz Search Extension (Nightly)
+          body: "Automatically built native extension binaries for cluaiz Search."
           files: artifacts/*

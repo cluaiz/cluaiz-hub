@@ -10,7 +10,7 @@ async fn main() {
         .await
         .unwrap();
 
-    let clean_text = cluaize_search::parser::stripper::Stripper::clean_html(&raw_html, "style, script, nav, footer, table");
+    let clean_text = cluaiz_search::parser::stripper::Stripper::clean_html(&raw_html, "style, script, nav, footer, table");
     
     std::fs::write("rust_search_result.md", clean_text).unwrap();
     println!("Saved output to rust_search_result.md");

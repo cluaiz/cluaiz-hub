@@ -1,10 +1,10 @@
 # Search Heuristics & Provider Optimization
 
-This document contains advanced heuristics for the `cluaize-search` extension. When the engine is operating in complex analysis modes, refer to these strategies to maximize search quality.
+This document contains advanced heuristics for the `cluaiz-search` extension. When the engine is operating in complex analysis modes, refer to these strategies to maximize search quality.
 
 ## Provider Differences
 
-The `cluaize-search` extension dynamically routes your queries to different backend providers based on the `manifest-extension.yaml` configuration. You must optimize your query based on the active provider.
+The `cluaiz-search` extension dynamically routes your queries to different backend providers based on the `manifest-extension.yaml` configuration. You must optimize your query based on the active provider.
 
 ### 1. Tavily (`search_api_type: "tavily"`)
 Tavily is an AI-native search engine designed for RAG (Retrieval-Augmented Generation).
@@ -20,11 +20,11 @@ DuckDuckGo is a traditional keyword-based search engine.
 
 ## Context Management (`exclude_rules`)
 
-When fetching URLs, the `cluaize-search` engine automatically strips HTML. However, many sites contain heavy boilerplate (navbars, footers, ad blocks) that can pollute your context window and dilute the `entropy_threshold`.
+When fetching URLs, the `cluaiz-search` engine automatically strips HTML. However, many sites contain heavy boilerplate (navbars, footers, ad blocks) that can pollute your context window and dilute the `entropy_threshold`.
 
 To prevent this, you can pass `exclude_rules` in your CEL command.
 ```cel
-let $site_data = use extension::cluaize-search -> fetch(
+let $site_data = use extension::cluaiz-search -> fetch(
     url: "https://example.com/article",
     exclude_rules: "nav, footer, .ad-banner, #sidebar, [role='complementary']"
 );
@@ -34,7 +34,7 @@ let $site_data = use extension::cluaize-search -> fetch(
 
 To protect your VRAM, you can forcefully truncate the returned HTML string.
 ```cel
-let $results = use extension::cluaize-search -> query(
+let $results = use extension::cluaiz-search -> query(
     q: "Rust memory model",
     max_context_length: 4096
 );

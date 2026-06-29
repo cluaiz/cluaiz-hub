@@ -8,7 +8,7 @@ category: "Tutorials"
 
 Because plugins run inside the strict `Wasmtime` VM (sandbox), they cannot read `.json` configuration files directly from the host machine's disk. 
 
-Instead, plugins request `system_bindings` in their manifest, and the Cluaize Engine bundles those settings into a `MsgPack` payload, passing a pointer directly into the WASM module.
+Instead, plugins request `system_bindings` in their manifest, and the cluaiz Engine bundles those settings into a `MsgPack` payload, passing a pointer directly into the WASM module.
 
 ---
 
@@ -56,7 +56,7 @@ pub struct ExtensionPayload {
 }
 
 #[no_mangle]
-pub extern "C" fn cluaize_entry(payload_ptr: *const ExtensionPayload) -> *mut c_char {
+pub extern "C" fn cluaiz_entry(payload_ptr: *const ExtensionPayload) -> *mut c_char {
     if payload_ptr.is_null() {
         return std::ptr::null_mut();
     }
@@ -93,11 +93,11 @@ pub extern "C" fn cluaize_entry(payload_ptr: *const ExtensionPayload) -> *mut c_
 ```
 
 > [!IMPORTANT]
-> The WASM module must return a dynamically allocated `CString` (which creates a memory leak in WASM linear memory). To fix this, you must also export a `cluaize_free_payload` function so the Engine can free it!
+> The WASM module must return a dynamically allocated `CString` (which creates a memory leak in WASM linear memory). To fix this, you must also export a `cluaiz_free_payload` function so the Engine can free it!
 
 ```rust
 #[no_mangle]
-pub extern "C" fn cluaize_free_payload(ptr: *mut c_char, _len: usize) {
+pub extern "C" fn cluaiz_free_payload(ptr: *mut c_char, _len: usize) {
     if !ptr.is_null() {
         unsafe {
             let _ = CString::from_raw(ptr);

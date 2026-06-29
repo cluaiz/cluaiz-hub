@@ -8,11 +8,11 @@ category: "Tutorials"
 
 A common mistake in traditional LLM applications is the "God Prompt"—dumping every single instruction, tool, and rule into the system prompt at boot time.
 
-In Cluaize, this is an anti-pattern. Large system prompts consume massive amounts of VRAM (KV Cache) and drastically reduce response times.
+In cluaiz, this is an anti-pattern. Large system prompts consume massive amounts of VRAM (KV Cache) and drastically reduce response times.
 
-## How Cluaize Solves This
+## How cluaiz Solves This
 
-Cluaize uses **Dynamic Context Injection**. 
+cluaiz uses **Dynamic Context Injection**. 
 
 Instead of loading every Skill into memory at once, the Engine uses the `discovery.semantic_triggers` defined in your `manifest-skill.yaml` to route inputs.
 

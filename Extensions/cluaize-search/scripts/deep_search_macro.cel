@@ -8,9 +8,9 @@ let $queries = [
     "Rust 2026 performance benchmarks"
 ];
 
-// Map over the queries and execute them in parallel (using Cluaize Engine's multiplexer)
+// Map over the queries and execute them in parallel (using cluaiz Engine's multiplexer)
 let $deep_results = $queries.map((q) => 
-    use extension::cluaize-search -> query(
+    use extension::cluaiz-search -> query(
         q: q, 
         max_context_length: 8192,
         timeout_secs: 15

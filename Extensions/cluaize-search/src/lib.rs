@@ -9,7 +9,7 @@ pub mod config;
 use search_engine::multiplexer::Multiplexer;
 use parser::{stripper::Stripper, ranker::Ranker, metadata::MetadataExtractor};
 
-/// The main FFI entry point for the Cluaize engine to call into this native extension.
+/// The main FFI entry point for the cluaiz engine to call into this native extension.
 /// Engine calls this via `UnifiedExecutor::execute()` after parsing CEL itself.
 /// The extension NEVER parses CEL — the engine handles that in `ffi_bridge.rs`.
 #[no_mangle]

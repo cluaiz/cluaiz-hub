@@ -1,17 +1,17 @@
-name: "cluaize-db"
+name: "cluaiz-db"
 version: "1.0.0"
-description: "Native Muscle for the Cluaize Neural Database."
+description: "Native Muscle for the cluaiz Neural Database."
 author: "Cluaiz Technologies"
 type: "extension"
 
 discovery:
   semantic_triggers: ["database", "cdql", "store", "fetch", "save"]
-  cel_grammar: "use extension::cluaize-db -> execute(...)"
+  cel_grammar: "use extension::cluaiz-db -> execute(...)"
 
 activation:
   lazy_load: true
   trigger_on: 
-    - "on_command:use extension::cluaize-db"
+    - "on_command:use extension::cluaiz-db"
 
 permissions:
   max_memory_mb: 256

@@ -71,7 +71,7 @@ async fn fetch_settings_from_ipc() -> Result<Value, String> {
 
     #[cfg(windows)]
     {
-        let mut client = match ClientOptions::new().open(r"\\.\pipe\cluaize_engine_pipe") {
+        let mut client = match ClientOptions::new().open(r"\\.\pipe\cluaiz_engine_pipe") {
             Ok(c) => c,
             Err(e) => return Err(format!("Failed to connect to Engine IPC on Windows: {}", e)),
         };
@@ -97,7 +97,7 @@ async fn fetch_settings_from_ipc() -> Result<Value, String> {
 
     #[cfg(unix)]
     {
-        let mut client = match UnixStream::connect("/tmp/cluaize_engine.sock").await {
+        let mut client = match UnixStream::connect("/tmp/cluaiz_engine.sock").await {
             Ok(c) => c,
             Err(e) => return Err(format!("Failed to connect to Engine Unix Socket: {}", e)),
         };

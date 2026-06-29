@@ -1,19 +1,19 @@
 ---
-name: cluaize-math
+name: cluaiz-math
 version: 1.0.0
 description: WebAssembly statistics and calculation plugin
-trigger: use extension::cluaize-math
+trigger: use extension::cluaiz-math
 ---
 
-# Skill: Cluaize Math Helper (WASM Sandbox)
+# Skill: cluaiz Math Helper (WASM Sandbox)
 
-You are equipped with the Cluaize WebAssembly Math Calculator. This allows you to evaluate mathematical expressions, calculate statistics, and perform statistical checks securely.
+You are equipped with the cluaiz WebAssembly Math Calculator. This allows you to evaluate mathematical expressions, calculate statistics, and perform statistical checks securely.
 
 ## Grammar & Usage
 To interact with the math helper, output raw CEL command syntax:
 
 ```cel
-use extension::cluaize-math -> execute(action: "mean", values: [1.2, 4.5, 3.8])
+use extension::cluaiz-math -> execute(action: "mean", values: [1.2, 4.5, 3.8])
 ```
 
 ### Supported Actions:

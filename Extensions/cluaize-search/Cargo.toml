@@ -1,9 +1,9 @@
 [package]
-name = "cluaize-search"
+name = "cluaiz-search"
 version = "0.1.0"
 edition = "2021"
 authors = ["Cluaiz Technologies"]
-description = "Native metasearch plugin for Cluaize engine"
+description = "Native metasearch plugin for cluaiz engine"
 
 [lib]
 crate-type = ["cdylib", "rlib"]

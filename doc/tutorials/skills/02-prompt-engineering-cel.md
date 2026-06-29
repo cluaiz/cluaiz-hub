@@ -14,7 +14,7 @@ To prevent hallucinations, you must use **Explicit CEL Grammar** in your `SKILL.
 
 ## Teaching the AI its Tools
 
-In Cluaize, the AI interacts with the system using **CEL (Cluaize Execution Language)**. You must provide the exact CEL template in your prompt so the AI knows how to construct the command.
+In cluaiz, the AI interacts with the system using **CEL (cluaiz Execution Language)**. You must provide the exact CEL template in your prompt so the AI knows how to construct the command.
 
 ### Bad Example (Vague)
 ```markdown
@@ -28,7 +28,7 @@ If the user asks for their balance, fetch it from the database extension.
 # Good Prompt
 If the user asks for their balance, fetch it from the database extension using the following CEL command:
 
-`use extension::cluaize-db-engine -> execute(query: "get_balance", user_id: "<DYNAMIC_ID>")`
+`use extension::cluaiz-db-engine -> execute(query: "get_balance", user_id: "<DYNAMIC_ID>")`
 
 Replace `<DYNAMIC_ID>` with the actual user ID. Wait for the engine to return the result before answering.
 ```
@@ -47,7 +47,7 @@ To process incoming text, follow these exact steps:
    `let $raw_text = use mcp::github-mcp-connector -> call_tool(read_issue, id: "123");`
    
 2. Pass the result to the math WASM plugin to extract statistics:
-   `let $stats = use plugin::cluaize-math-accelerator -> invoke(calculate, expr: $raw_text);`
+   `let $stats = use plugin::cluaiz-math-accelerator -> invoke(calculate, expr: $raw_text);`
    
 3. Summarize the `$stats` output for the user.
 ```

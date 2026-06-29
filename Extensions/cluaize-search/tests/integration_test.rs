@@ -1,4 +1,4 @@
-use cluaize_search::execute_cel;
+use cluaiz_search::execute_cel;
 use serde_json::Value;
 use std::ffi::{CStr, CString};
 
@@ -22,7 +22,7 @@ fn call_execute_cel(payload: serde_json::Value) -> String {
     let result_str = result_c_str.to_str().unwrap().to_string();
 
     // Free the string
-    cluaize_search::free_string(result_ptr);
+    cluaiz_search::free_string(result_ptr);
 
     result_str
 }
@@ -72,12 +72,12 @@ fn test_stripper_advanced_rules() {
         </html>
     "#;
 
-    let cleaned_default = cluaize_search::parser::stripper::Stripper::clean_html(raw_html, "");
+    let cleaned_default = cluaiz_search::parser::stripper::Stripper::clean_html(raw_html, "");
     assert!(!cleaned_default.contains("console.log"));
 
     let exclude_rules = "script, style, nav, aside.sidebar, footer";
     let cleaned_custom =
-        cluaize_search::parser::stripper::Stripper::clean_html(raw_html, exclude_rules);
+        cluaiz_search::parser::stripper::Stripper::clean_html(raw_html, exclude_rules);
 
     assert!(!cleaned_custom.contains("Navigation Links"));
     assert!(!cleaned_custom.contains("Ads and stuff"));
@@ -109,7 +109,7 @@ fn test_fetch_invalid_url() {
     let (_, timeout_secs, _) = get_manifest_config();
     let payload = serde_json::json!({
         "action": "fetch",
-        "target": "https://this-url-is-definitely-fake-cluaize.dev",
+        "target": "https://this-url-is-definitely-fake-cluaiz.dev",
         "timeout_secs": timeout_secs
     });
 

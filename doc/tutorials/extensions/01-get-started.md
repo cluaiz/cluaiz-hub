@@ -1,17 +1,17 @@
 ---
 title: "Get Started: Build Your First Extension"
-description: "Learn what Cluaize Extensions are and how to scaffold your first Native DLL."
+description: "Learn what cluaiz Extensions are and how to scaffold your first Native DLL."
 category: "Tutorials"
 ---
 
 # 1. Get Started: Build Your First Extension
 
-Welcome to the Cluaize Extension Developer Guide. In Cluaize, **Extensions** (often called plugins) are Native Dynamic-Link Libraries (`.dll` on Windows, `.so` on Linux). 
+Welcome to the cluaiz Extension Developer Guide. In cluaiz, **Extensions** (often called plugins) are Native Dynamic-Link Libraries (`.dll` on Windows, `.so` on Linux). 
 
-Unlike standard web APIs, Cluaize extensions run bare-metal. They receive data from the core Cluaize Engine via **C-Pointers (FFI Boundaries)**, making them extremely fast and memory-efficient.
+Unlike standard web APIs, cluaiz extensions run bare-metal. They receive data from the core cluaiz Engine via **C-Pointers (FFI Boundaries)**, making them extremely fast and memory-efficient.
 
 > [!IMPORTANT]
-> **For more details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaize-hub/doc/architecture/skill_architecture.md)
+> **For more details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaiz-hub/doc/architecture/skill_architecture.md)
 > 
 > For **Extensions**, creating a `SKILL.md` file alongside your DLL is a **STRICT REQUIREMENT**. The DLL provides the muscle, but without a `SKILL.md`, the AI has no "Brain" or context on how to use it. 
 
@@ -23,7 +23,7 @@ Before writing any code, it is critical to understand the data flow. Extensions 
 
 ```mermaid
 flowchart TD
-    A["Cluaize Engine (Host)"] -->|Loads Extension| B{"Registry"}
+    A["cluaiz Engine (Host)"] -->|Loads Extension| B{"Registry"}
     B -->|AI Decides to Use Tool| C["Payload Compiler"]
     C -->|Constructs Bincode Payload| D["Extension Boundary (C-Pointer)"]
     D -->|Calls execute_cel(ptr)| E["Your Extension (.dll)"]

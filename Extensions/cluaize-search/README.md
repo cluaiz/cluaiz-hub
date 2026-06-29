@@ -1,12 +1,12 @@
-# Cluaize Native Metasearch Extension (`cluaize-search`)
+# cluaiz Native Metasearch Extension (`cluaiz-search`)
 
-This is a Native Dynamic Library (`cdylib`) extension for the Cluaize Engine. It provides zero-latency, VRAM-aware web metasearch and DOM parsing via direct C-pointer KV-Cache injection.
+This is a Native Dynamic Library (`cdylib`) extension for the cluaiz Engine. It provides zero-latency, VRAM-aware web metasearch and DOM parsing via direct C-pointer KV-Cache injection.
 
 ## Features
 - **Metasearch Multiplexing**: Concurrent routing to SearXNG and DuckDuckGo using `reqwest` and `tokio`.
 - **Hardware-Aware Compression**: Dynamically adjusts context size based on available VRAM.
 - **YouTube Metadata Extraction**: Parses OpenGraph tags without heavy transcript bloat.
-- **CEL Bridge**: Fully controllable via Cluaize Expression Language (CEL).
+- **CEL Bridge**: Fully controllable via cluaiz Expression Language (CEL).
 
 ## Compilation
 This extension is compiled as a native dynamic library:
@@ -17,7 +17,7 @@ This extension is compiled as a native dynamic library:
 It uses pure native async I/O to achieve sub-millisecond network speeds, avoiding the overhead of WebAssembly for networking.
 # Research & Implementation Plan: Cluaiz Native Metasearch (`cluaiz-search`)
 
-## Research: Search Architecture (Competitors vs Cluaize)
+## Research: Search Architecture (Competitors vs cluaiz)
 
 ### Current Reality
 [FACT] GPT, Gemini, aur Grok apne paas trillion-dollar data centers rakhte hain jahan web crawling unke apne infrastructure par hoti hai. Unka RAG (Retrieval-Augmented Generation) massive cloud clusters par chalta hai.
@@ -52,9 +52,9 @@ It uses pure native async I/O to achieve sub-millisecond network speeds, avoidin
 - **Self-Evolving (`search_dna.json`):** Agent track karega ki user kaunsi sites (e.g. GitHub/StackOverflow) pasand karta hai, aur unhe rank karega bina kisi heavy embedding model ke (BM25 use karke).
 
 ### 3. The "Agentic Pause" (C-FFI Injection)
-- The AI does **not** directly execute a CEL tool command. Instead, when it determines a search is needed, it emits a raw, native token: `<TRIGGER:extension:cluaize-search>`.
+- The AI does **not** directly execute a CEL tool command. Instead, when it determines a search is needed, it emits a raw, native token: `<TRIGGER:extension:cluaiz-search>`.
 - The Engine's dispatcher (`chat.rs`) intercepts this token and immediately **breaks the generation stream**. This is the Agentic Pause.
-- During the pause, the engine loads `manifest-extension.yaml` and `SKILL.md` from the MasterRegistry and dynamically injects them into the context window as a `[SYSTEM INJECTION: TOOL SCHEMA FOR cluaize-search]`.
+- During the pause, the engine loads `manifest-extension.yaml` and `SKILL.md` from the MasterRegistry and dynamically injects them into the context window as a `[SYSTEM INJECTION: TOOL SCHEMA FOR cluaiz-search]`.
 - The Engine triggers a Dual-Cache Compilation to resize the VRAM KV-Cache for the new context.
 - Once injected, the Engine re-invokes the prompt (`dispatch_stream`). The AI resumes generation, reads the injected `SKILL.md`, and then provides the exact query string.
 
@@ -88,16 +88,16 @@ It uses pure native async I/O to achieve sub-millisecond network speeds, avoidin
 - Engine sirf OpenGraph `<meta>` tags parse karega (Title, Description, Tags, Thumbnail) jisse AI ko video ka sara context mil jayega. Yeh 100% legal, fast aur bloat-free hai.
 
 ### 8. Extension Folder Tree Structure
-- Extension **`cluaize-skills/Extensions/cluaize-search/`** ke andar banega. Iska proper structure yeh hoga:
+- Extension **`cluaiz-hub/Extensions/cluaiz-search/`** ke andar banega. Iska proper structure yeh hoga:
 ```text
-cluaize-search/
+cluaiz-search/
 ├── Cargo.toml                 # Rust dependencies
 ├── README.md                  # Extension documentation
 ├── SKILL.md                   # AI Trigger Rules / CEL Syntax Rules
 ├── manifest.yaml              # Core Engine Rules (Network allowed, RAM limits)
 ├── references/                # Helper documentation & guidelines for this extension
 ├── scripts/                   # Utility scripts (e.g., build/test scripts)
-├── .cluaize/                  # Compiled binary output folder
+├── .cluaiz/                  # Compiled binary output folder
 │   └── bin/
 └── src/
     ├── lib.rs                 # FFI Entry point (`execute_cel`)
@@ -131,4 +131,4 @@ cluaize-search/
 > 
 > Hum apne existing "Pause & Think" architecture ko use karke zero-latency KV-Cache search inject karenge, aur isey proper Extension folder me build karenge.
 > 
-> **Kya main ab seedha `cargo new cluaize-search` run karke yeh folder tree aur base code likhna shuru karun?** (Proceed button dabao aur main coding start kar dunga).
+> **Kya main ab seedha `cargo new cluaiz-search` run karke yeh folder tree aur base code likhna shuru karun?** (Proceed button dabao aur main coding start kar dunga).

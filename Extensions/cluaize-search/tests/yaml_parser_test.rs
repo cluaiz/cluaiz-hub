@@ -22,8 +22,8 @@ async fn test_yaml_system_bindings() {
 
     // 2. Connect to the Engine directly via IPC (No file paths, no mocks!)
     let mut client = ClientOptions::new()
-        .open(r"\\.\pipe\cluaize_engine_pipe")
-        .expect("Failed to connect to Cluaize Engine Named Pipe. Make sure 'cargo run serve' is running!");
+        .open(r"\\.\pipe\cluaiz_engine_pipe")
+        .expect("Failed to connect to cluaiz Engine Named Pipe. Make sure 'cargo run serve' is running!");
 
     // 3. Send the request to the engine
     let request = serde_json::json!({ "action": "GET_SETTINGS" });

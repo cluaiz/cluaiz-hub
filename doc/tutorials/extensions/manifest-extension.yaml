@@ -1,12 +1,12 @@
 # =====================================================================
-# CLUAIZE EXTENSION MANIFEST (manifest-extension.yaml)
+# cluaiz EXTENSION MANIFEST (manifest-extension.yaml)
 #
 # PURPOSE: An "Extension" is Brain + Muscle.
 # It has a `SKILL.md` (detailed instructions for AI) AND a binary (muscle).
 # =====================================================================
 
-# [FIXED SCHEMA] Unique name. Example: "cluaize-db-engine"
-name: "cluaize-db-engine"
+# [FIXED SCHEMA] Unique name. Example: "cluaiz-db-engine"
+name: "cluaiz-db-engine"
 
 # [FIXED SCHEMA] Version string. Example: "2.0.0"
 version: "2.0.0"
@@ -28,7 +28,7 @@ discovery:
   semantic_triggers: ["database", "cdql", "store", "fetch"]
   
   # [FIXED SCHEMA] Exact CEL format. The AI will write code in this format.
-  cel_grammar: "use extension::cluaize-db-engine -> execute(...)"
+  cel_grammar: "use extension::cluaiz-db-engine -> execute(...)"
   
 
 
@@ -38,7 +38,7 @@ activation:
   
   # [FIXED SCHEMA] The engine will load the binary into memory upon these commands.
   trigger_on: 
-    - "on_command:use extension::cluaize-db-engine"
+    - "on_command:use extension::cluaiz-db-engine"
     - "on_cel_keyword:cdql"
 
 permissions:

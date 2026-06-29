@@ -57,4 +57,4 @@ Paste the following standard MCP JSON-RPC payload into your terminal and press E
 
 If your MCP server is functioning properly, it will instantly print a JSON-RPC response back to the terminal (`stdout`) containing the GitHub data. 
 
-If this manual terminal test works, you can guarantee that the Cluaize Engine will be able to spawn and communicate with it!
+If this manual terminal test works, you can guarantee that the cluaiz Engine will be able to spawn and communicate with it!

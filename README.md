@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="assets/cluaize-hub.webp" alt="The Official Registry for the Cluaize Ecosystem." width="100%">
+  <img src="assets/cluaiz-hub.webp" alt="The Official Registry for the Cluaiz Ecosystem." width="100%">
 </p>
 
-<h1 align="center">Cluaize Hub</h1>
+<h1 align="center">Cluaiz Hub</h1>
 
 <p align="center">
-  <strong>The Official Central Registry for Cluaize Extensions, Plugins, Skills, Souls, & MCP.</strong>
+  <strong>The Official Central Registry for Cluaiz Extensions, Plugins, Skills, Souls, & MCP.</strong>
 </p>
 
 <p align="center">
@@ -17,19 +17,19 @@
 
 ## 🌟 What is this?
 
-This repository (**Cluaize Hub**) is the central nervous system for the Cluaize Inference Engine. It contains everything needed to extend the core engine's capabilities, give the AI new knowledge, and define agent personas.
+This repository (**cluaiz Hub**) is the central nervous system for the cluaiz Inference Engine. It contains everything needed to extend the core engine's capabilities, give the AI new knowledge, and define agent personas.
 
-The Cluaize architecture enforces a strict decoupling of logic from the Core Engine. The engine itself is a "dumb router"; all actual capabilities live here in this Hub.
+The cluaiz architecture enforces a strict decoupling of logic from the Core Engine. The engine itself is a "dumb router"; all actual capabilities live here in this Hub.
 
 ---
 
-## 🏗️ The 5 Pillars of Cluaize Ecosystem
+## 🏗️ The 5 Pillars of cluaiz Ecosystem
 
-To understand how to build and contribute, you must understand the strict Cluaize Taxonomy.
+To understand how to build and contribute, you must understand the strict cluaiz Taxonomy.
 
 ### 1. 🧩 Extensions (The Brain + Muscle Bundle)
 An **Extension** extends the entire system's behavior. It is a bundle that combines the Brain (instructions) and the Muscle (native code).
-- **Example:** `cluaize-database` (cluaizd). It contains a `SKILL.md` (to teach the AI how to write database queries) AND the native `cluaizd_engine.dll` (to actually execute them).
+- **Example:** `cluaiz-database` (cluaizd). It contains a `SKILL.md` (to teach the AI how to write database queries) AND the native `cluaizd_engine.dll` (to actually execute them).
 
 ### 2. 🔌 Plugins (The Functional Muscle)
 A **Plugin** is a standalone, compiled third-party binary (`.dll`, `.wasm`, `.so`) that gives the engine a specific hardware or OS-level capability.
@@ -44,7 +44,7 @@ A **Soul** defines an AI agent's core identity, constraints, and bundles specifi
 - **Example:** `Senior_Rust_Developer` soul. It is bundled with the "Cargo Build" skill and the "Terminal" plugin, but restricted from accessing the "Medical Database".
 
 ### 5. 🌐 MCP (Model Context Protocol)
-External standard connectors. If a tool runs on a completely different server (like Slack or GitHub), an MCP connector bridges it to the Cluaize Engine.
+External standard connectors. If a tool runs on a completely different server (like Slack or GitHub), an MCP connector bridges it to the cluaiz Engine.
 
 ---
 
@@ -53,7 +53,7 @@ External standard connectors. If a tool runs on a completely different server (l
 ```text
 cluaiz-hub/
 ├── extensions/                  # Bundled (Brain + Muscle) systems
-│   └── cluaize-database/        # Example: The cluaizd database framework
+│   └── cluaiz-database/        # Example: The cluaizd database framework
 │       ├── manifest.json        # Capabilities & limits
 │       ├── SKILL.md             # The Brain
 │       └── native/              # The Muscle (.dll/.wasm)
@@ -84,7 +84,7 @@ cluaiz-hub/
 graph TD
     U["User Prompt"] --> S["Soul (Persona)"]
     
-    subgraph Hub["Cluaize Hub (Registry)"]
+    subgraph Hub["cluaiz Hub (Registry)"]
         SK["Skills (SKILL.md)"]
         EX["Extensions (Brain + Muscle)"]
     end
@@ -118,7 +118,7 @@ graph TD
 
 When the user queries the Engine, here is how an **Extension** (like the Database) flows:
 
-1. **Extension Load:** The Engine reads the `cluaize-database` extension and injects the `SKILL.md` into the AI's context window.
+1. **Extension Load:** The Engine reads the `cluaiz-database` extension and injects the `SKILL.md` into the AI's context window.
 2. **AI Inference:** The AI reads the instructions and outputs a CEL Query: `use plugin::database -> find User`.
 3. **Engine Routing:** The Engine intercepts the CEL string, realizes it needs the database, and loads the Muscle (`native/cluaizd_engine.dll`).
 4. **Native Execution:** The Engine executes the DLL at 0.05ms latency via C-FFI and passes the resulting memory pointer back to the AI context.
@@ -127,11 +127,11 @@ When the user queries the Engine, here is how an **Extension** (like the Databas
 
 ## 🚀 Quick Start (CLI)
 
-You can install any module from the Hub directly via the Cluaize CLI:
+You can install any module from the Hub directly via the cluaiz CLI:
 
 ```bash
 # Install an entire Extension
-cluaiz install extension cluaize-database
+cluaiz install extension cluaiz-database
 
 # Install a standalone Skill
 cluaiz install skill doc-summarizer

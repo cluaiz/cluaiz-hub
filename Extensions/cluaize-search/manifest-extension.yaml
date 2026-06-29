@@ -1,17 +1,17 @@
-name: "cluaize-search"
+name: "cluaiz-search"
 version: "1.0.0"
-description: "Native Dynamic Library extension for Cluaize Engine. Provides VRAM-aware web metasearch."
+description: "Native Dynamic Library extension for cluaiz Engine. Provides VRAM-aware web metasearch."
 author: "Cluaiz Technologies"
 type: "extension"
 
 discovery:
   semantic_triggers: ["search", "web", "find"]
-  cel_grammar: "use extension::cluaize-search -> search(...)"
+  cel_grammar: "use extension::cluaiz-search -> search(...)"
 
 activation:
   lazy_load: true
   trigger_on: 
-    - "on_command:use extension::cluaize-search"
+    - "on_command:use extension::cluaiz-search"
 
 permissions:
   max_memory_mb: 256

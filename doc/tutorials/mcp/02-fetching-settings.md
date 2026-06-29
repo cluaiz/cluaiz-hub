@@ -8,11 +8,11 @@ category: "Tutorials"
 
 Unlike Native Extensions or WASM Plugins—which receive a C-Pointer containing a MsgPack or Bincode payload—MCP servers are entirely separate processes (e.g., Node.js). 
 
-They cannot read C-Pointers. So, how does an MCP server read Cluaize Engine settings like `system_booster.think_mode`?
+They cannot read C-Pointers. So, how does an MCP server read cluaiz Engine settings like `system_booster.think_mode`?
 
 ## The Solution: Process Environment Variables
 
-When the Cluaize Engine spawns the MCP process via `stdio`, it resolves the requested `system_bindings` and passes them as **Environment Variables** to the child process.
+When the cluaiz Engine spawns the MCP process via `stdio`, it resolves the requested `system_bindings` and passes them as **Environment Variables** to the child process.
 
 ---
 
@@ -44,7 +44,7 @@ const server = new McpServer({
   version: "1.0.0"
 });
 
-// Read the Cluaize injected settings
+// Read the cluaiz injected settings
 const thinkMode = process.env.SYSTEM_BOOSTER__THINK_MODE || "Off";
 const responseLength = process.env.SYSTEM_BOOSTER__RESPONSE_LENGTH || "auto";
 
@@ -53,7 +53,7 @@ console.error(`Starting MCP with Think Mode: ${thinkMode}`);
 server.tool(
   "fetch_repo_data",
   async ({ repoUrl }) => {
-      // Adjust the depth of API calls based on Cluaize's think_mode!
+      // Adjust the depth of API calls based on cluaiz's think_mode!
       if (thinkMode === "On") {
           return { content: [{ type: "text", text: "Deep fetching all issues and PRs..." }] };
       } else {
@@ -70,7 +70,7 @@ from mcp.server import Server
 
 app = Server("custom-github-connector")
 
-# Read the Cluaize injected settings
+# Read the cluaiz injected settings
 think_mode = os.environ.get("SYSTEM_BOOSTER__THINK_MODE", "Off")
 
 @app.tool()

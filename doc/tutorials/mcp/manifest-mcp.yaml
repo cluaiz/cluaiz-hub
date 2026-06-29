@@ -1,5 +1,5 @@
 # =====================================================================
-# CLUAIZE MCP MANIFEST (manifest-mcp.yaml)
+# cluaiz MCP MANIFEST (manifest-mcp.yaml)
 #
 # PURPOSE: An "MCP" (Model Context Protocol) runs outside the Engine.
 # It is a separate process (like Node.js or Python). Engine talks to it via stdio.

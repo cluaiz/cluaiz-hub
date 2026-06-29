@@ -4,7 +4,7 @@
 
 let $query = "Rust latest version release date";
 
-let $fast_result = use extension::cluaize-search -> query(
+let $fast_result = use extension::cluaiz-search -> query(
     q: $query,
     max_context_length: 1024, // Keep context tiny for fast LLM ingestion
     timeout_secs: 3,          // Fail fast

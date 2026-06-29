@@ -2,7 +2,7 @@
 
 ## 1. Diátaxis: Explanation (Architectural Deep Dive)
 
-This document explains the Two-Tier Registry Architecture governing how the Cluaize Engine discovers, indexes, and executes extensions without O(N) directory scanning during boot.
+This document explains the Two-Tier Registry Architecture governing how the cluaiz Engine discovers, indexes, and executes extensions without O(N) directory scanning during boot.
 
 ---
 
@@ -13,7 +13,7 @@ The engine uses a strict separation of concerns between **Indexing** (`registry.
 ```mermaid
 graph TD
     A["Engine Boot (Cold Start)"] --> B["Bincode deserialize registry.bin (Fast Cache)"]
-    B -- "Cache Miss" --> C["Parse ~/.cluaize/engine/config/registry.yaml"]
+    B -- "Cache Miss" --> C["Parse ~/.cluaiz/engine/config/registry.yaml"]
     C --> D{"Evaluate Load Strategy"}
     
     D -->|Eager| E["Load binary to RAM instantly"]
@@ -29,7 +29,7 @@ graph TD
 ---
 
 ## 3. The Master Registry (`MasterRegistry`)
-**Source of Truth File:** `~/.cluaize/engine/config/registry.yaml`  
+**Source of Truth File:** `~/.cluaiz/engine/config/registry.yaml`  
 **Binary Cache:** `registry.bin`  
 **Code Location:** `registry_index.rs`
 
@@ -39,10 +39,10 @@ The engine reads this file *once* at boot. It contains a hashmap of all known `e
 
 | Keyword | Type | Description |
 |---|---|---|
-| `id` | `String` | Unique identifier generated at installation (e.g., `ext_cluaize_search_12345`). |
-| `domain` | `String` | Relative path where the component lives (e.g., `core/cluaize-db`). Used to locate the component folder instantly. |
+| `id` | `String` | Unique identifier generated at installation (e.g., `ext_cluaiz_search_12345`). |
+| `domain` | `String` | Relative path where the component lives (e.g., `core/cluaiz-db`). Used to locate the component folder instantly. |
 | `load_strategy` | `Enum` | `EAGER` (Load into RAM immediately), `LAZY` (Register events, load on demand), `MANUAL` (Only via CLI). |
-| `activation_events`| `Vec<String>` | Event patterns that trigger lazy loading (e.g., `"on_command:use extension::cluaize-search"`). |
+| `activation_events`| `Vec<String>` | Event patterns that trigger lazy loading (e.g., `"on_command:use extension::cluaiz-search"`). |
 | `enabled` | `bool` | If false, the engine ignores the component entirely. Default is `true`. |
 | `binary_hash` | `Option<String>`| SHA256 checksum to verify the binary wasn't tampered with. |
 | `semantic_index` | `Option<Vec<String>>` | Keyword triggers for the AI to instantly route requests. |
@@ -56,12 +56,12 @@ The engine reads this file *once* at boot. It contains a hashmap of all known `e
 This file defines *how* the component executes, its hardware limits, and its exact AI interface. It is lazily parsed only when the component is triggered.
 
 > [!TIP]
-> **Complete Example:** View a fully documented, real-world example of this file here: [**`doc/architecture/manifest.yaml`**](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaize-hub/doc/architecture/manifest.yaml).
+> **Complete Example:** View a fully documented, real-world example of this file here: [**`doc/architecture/manifest.yaml`**](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaiz-hub/doc/architecture/manifest.yaml).
 
 ### Base Metadata Fields
 | Keyword | Type | Description |
 |---|---|---|
-| `name` | `String` | Exact name of the component (e.g., `cluaize-search`). |
+| `name` | `String` | Exact name of the component (e.g., `cluaiz-search`). |
 | `version` | `String` | Semantic version string (e.g., `1.0.0`). |
 | `description` | `String` | Brief description of the component's purpose. |
 | `author` | `String` | Author or publisher name. |

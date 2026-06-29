@@ -6,12 +6,12 @@ category: "Tutorials"
 
 # 1. Build Your First Plugin (WASM / C++)
 
-In the Cluaize ecosystem, a **Plugin** is distinct from an Extension. While Extensions are Native DLLs providing raw OS access, Plugins are **Compiled WebAssembly (WASM)** modules (`type: plugin`). 
+In the cluaiz ecosystem, a **Plugin** is distinct from an Extension. While Extensions are Native DLLs providing raw OS access, Plugins are **Compiled WebAssembly (WASM)** modules (`type: plugin`). 
 
 Plugins run entirely within the Engine's WASM sandbox. They are meant for "pure muscle" tasks (e.g., fast math, text parsing) and have absolutely no AI prompt or "brain" attached.
 
 > [!TIP]
-> **For more details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaize-hub/doc/architecture/skill_architecture.md)
+> **For more details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaiz-hub/doc/architecture/skill_architecture.md)
 > 
 > For **Plugins**, creating a `SKILL.md` file is **OPTIONAL but RECOMMENDED**. While a plugin can execute blindly, providing a `SKILL.md` teaches the AI how to use it properly and gives the AI the power to understand the tool's context.
 
@@ -21,7 +21,7 @@ Plugins run entirely within the Engine's WASM sandbox. They are meant for "pure 
 
 ```mermaid
 flowchart TD
-    A["Cluaize Engine"] -->|CEL Router Identifies Plugin| B{"Wasmtime VM"}
+    A["cluaiz Engine"] -->|CEL Router Identifies Plugin| B{"Wasmtime VM"}
     B -->|Compiles ExtensionPayload (MsgPack)| C["Compiled Plugin (.wasm)"]
     C -->|Executes Sandbox Logic| B
     B -->|Returns CString| A
@@ -36,9 +36,9 @@ Every plugin requires a `manifest-plugin.yaml`. The Engine uses this to configur
 
 ```yaml
 # =====================================================================
-# CLUAIZE PLUGIN MANIFEST (manifest-plugin.yaml)
+# cluaiz PLUGIN MANIFEST (manifest-plugin.yaml)
 # =====================================================================
-name: "cluaize-math-accelerator"
+name: "cluaiz-math-accelerator"
 version: "1.0.0"
 description: "A hardware-accelerated math parsing plugin compiled to WASM."
 author: "Cluaiz Engineers"
@@ -51,7 +51,7 @@ discovery:
 activation:
   lazy_load: true
   trigger_on: 
-    - "on_command:use plugin::cluaize-math-accelerator"
+    - "on_command:use plugin::cluaiz-math-accelerator"
 
 permissions:
   # Hard RAM limit (in MB). The Engine will OOM kill the WASM if exceeded.
@@ -66,7 +66,7 @@ execution:
   # Sandbox type. "WASM" (Strict limits)
   envelope: "WASM"
   # The exported C-language function name. The Engine will call this.
-  entry_point: "cluaize_entry"
+  entry_point: "cluaiz_entry"
   # How to serialize the data. "MsgPack" or "JSON".
   payload_format: "MsgPack"
 ```
@@ -98,7 +98,7 @@ rmp-serde = "1.1" # For MsgPack parsing
 
 ## Step 3: The Code (MsgPack via C-Pointer)
 
-Inside `src/lib.rs`, expose the `cluaize_entry` function. Unlike basic strings, the Engine passes a structured `ExtensionPayload` pointer containing the `MsgPack` serialized data.
+Inside `src/lib.rs`, expose the `cluaiz_entry` function. Unlike basic strings, the Engine passes a structured `ExtensionPayload` pointer containing the `MsgPack` serialized data.
 
 ```rust
 use std::ffi::{c_char, CString};
@@ -115,7 +115,7 @@ pub struct ExtensionPayload {
 }
 
 #[no_mangle]
-pub extern "C" fn cluaize_entry(payload_ptr: *const ExtensionPayload) -> *mut c_char {
+pub extern "C" fn cluaiz_entry(payload_ptr: *const ExtensionPayload) -> *mut c_char {
     if payload_ptr.is_null() {
         return std::ptr::null_mut();
     }

@@ -7,9 +7,9 @@ category: "Tutorials"
 # 4. Creating `SKILL.md` for Your Tools
 
 > [!TIP]
-> **For full architectural details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaize-hub/doc/architecture/skill_architecture.md)
+> **For full architectural details, reference:** [`skill_architecture.md`](file:///c:/Users/Aryan/my/Cluaiz-workspace/Cluaiz-Technologies/cluaiz-hub/doc/architecture/skill_architecture.md)
 
-When you build a new tool for Cluaize (whether it's an Extension, a WASM Plugin, or an MCP Server), you are building **Muscle**. 
+When you build a new tool for cluaiz (whether it's an Extension, a WASM Plugin, or an MCP Server), you are building **Muscle**. 
 
 However, the AI does not automatically know how to use your tool. To give the AI power, context, and exact instructions, you must create a `SKILL.md` file.
 
@@ -48,11 +48,11 @@ core_metadata:
 
 # Math Execution Protocol
 
-You are equipped with the `cluaize-math-accelerator` plugin. When the user asks you to perform a calculation, you MUST NOT calculate it yourself (to avoid hallucination).
+You are equipped with the `cluaiz-math-accelerator` plugin. When the user asks you to perform a calculation, you MUST NOT calculate it yourself (to avoid hallucination).
 
 Instead, you must use the plugin by emitting the following CEL command:
 
-`let $result = use plugin::cluaize-math-accelerator -> invoke(calculate, expr: "<THE_EXPRESSION>");`
+`let $result = use plugin::cluaiz-math-accelerator -> invoke(calculate, expr: "<THE_EXPRESSION>");`
 
 Once the engine returns `$result`, you must present the final number clearly to the user.
 ```
