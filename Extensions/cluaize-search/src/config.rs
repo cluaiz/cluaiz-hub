@@ -67,6 +67,7 @@ async fn fetch_settings_from_ipc() -> Result<Value, String> {
     let request = serde_json::json!({ "action": "GET_SETTINGS" });
     let mut response_bytes = Vec::new();
     let mut buf = vec![0; 8192];
+    let timeout_duration = std::time::Duration::from_secs(2);
 
     #[cfg(windows)]
     {
@@ -74,19 +75,22 @@ async fn fetch_settings_from_ipc() -> Result<Value, String> {
             Ok(c) => c,
             Err(e) => return Err(format!("Failed to connect to Engine IPC on Windows: {}", e)),
         };
-        if let Err(e) = client.write_all(request.to_string().as_bytes()).await {
-            return Err(format!("Failed to send request to Engine: {}", e));
+        
+        if let Err(e) = tokio::time::timeout(timeout_duration, client.write_all(request.to_string().as_bytes())).await {
+            return Err(format!("IPC Write Timeout: {}", e));
         }
+        
         loop {
-            match client.read(&mut buf).await {
-                Ok(n) if n == 0 => return Err("Engine closed pipe before sending full JSON".to_string()),
-                Ok(n) => {
+            match tokio::time::timeout(timeout_duration, client.read(&mut buf)).await {
+                Ok(Ok(n)) if n == 0 => return Err("Engine closed pipe before sending full JSON".to_string()),
+                Ok(Ok(n)) => {
                     response_bytes.extend_from_slice(&buf[..n]);
                     if let Ok(parsed) = serde_json::from_slice::<Value>(&response_bytes) {
                         return Ok(parsed);
                     }
                 }
-                Err(e) => return Err(format!("Failed to read from pipe: {}", e)),
+                Ok(Err(e)) => return Err(format!("Failed to read from pipe: {}", e)),
+                Err(_) => return Err("IPC Read Timeout: Engine did not respond in 2 seconds".to_string()),
             }
         }
     }
@@ -97,19 +101,22 @@ async fn fetch_settings_from_ipc() -> Result<Value, String> {
             Ok(c) => c,
             Err(e) => return Err(format!("Failed to connect to Engine Unix Socket: {}", e)),
         };
-        if let Err(e) = client.write_all(request.to_string().as_bytes()).await {
-            return Err(format!("Failed to send request to Engine: {}", e));
+        
+        if let Err(e) = tokio::time::timeout(timeout_duration, client.write_all(request.to_string().as_bytes())).await {
+            return Err(format!("IPC Write Timeout: {}", e));
         }
+        
         loop {
-            match client.read(&mut buf).await {
-                Ok(n) if n == 0 => return Err("Engine closed socket before sending full JSON".to_string()),
-                Ok(n) => {
+            match tokio::time::timeout(timeout_duration, client.read(&mut buf)).await {
+                Ok(Ok(n)) if n == 0 => return Err("Engine closed socket before sending full JSON".to_string()),
+                Ok(Ok(n)) => {
                     response_bytes.extend_from_slice(&buf[..n]);
                     if let Ok(parsed) = serde_json::from_slice::<Value>(&response_bytes) {
                         return Ok(parsed);
                     }
                 }
-                Err(e) => return Err(format!("Failed to read from socket: {}", e)),
+                Ok(Err(e)) => return Err(format!("Failed to read from socket: {}", e)),
+                Err(_) => return Err("IPC Read Timeout: Engine did not respond in 2 seconds".to_string()),
             }
         }
     }

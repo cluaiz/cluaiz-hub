@@ -56,3 +56,25 @@ jobs:
           name: cluaize-search-macos
           path: Extensions/cluaize-search/target/release/*.dylib
           if-no-files-found: error
+
+  release:
+    name: Create GitHub Release
+    needs: build-extension
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: search-nightly
+          name: Cluaize Search Extension (Nightly)
+          body: "Automatically built native extension binaries for Cluaize Search."
+          files: artifacts/*
