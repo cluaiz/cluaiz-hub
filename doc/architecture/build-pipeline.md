@@ -70,8 +70,15 @@ Here is a full example of a perfectly structured Extension package:
   "build_type": "binary",
   "github_action": true,
   "logo": "/assets/cluaiz-search.webp",
-  "description": "High-performance native search extension for Cluaiz...",
-  "tags": ["Search", "Native", "C++", "Core"],
+  "title": "Cluaiz Local Search Indexer",
+  "description": "Local search indexing extension for Cluaiz Engine. Built in C++ for cross-platform data retrieval, supporting inverted index structures and exact string matching without network dependency.",
+  "tags": [
+    "Search",
+    "Inverted-Index",
+    "C++",
+    "Cross-platform",
+    "Retrieval"
+  ],
   "documentation": "https://github.com/cluaiz/cluaiz-hub/blob/main/extensions/cluaize-search/README.md",
   "latest_version": "0.1.0",
   "versions": {
@@ -80,16 +87,16 @@ Here is a full example of a perfectly structured Extension package:
       "builds_os": ["windows", "macos", "linux"],
       "changelog": "Nightly release with latest native performance improvements.",
       "os": {
-        "windows": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-Cluaiz-search/Cluaiz_search_windows_x64_v0.1.0.dll",
-        "macos": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-Cluaiz-search/libCluaiz_search_macos_arm64_v0.1.0.dylib",
-        "linux": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-Cluaiz-search/libCluaiz_search_linux_x64_v0.1.0.so"
+        "windows": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search/cluaiz-search_windows_x64_v0.1.0.dll",
+        "macos": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search/libcluaiz-search_macos_arm64_v0.1.0.dylib",
+        "linux": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search/libcluaiz-search_linux_x64_v0.1.0.so"
       },
       "files": {
         "skill": "/SKILL.md",
         "scripts": "/scripts",
         "references": "/references",
         "manifest": "/manifest-extension.yaml",
-        "file_directory": "https://raw.githubusercontent.com/cluaiz/cluaiz-hub/main/extensions/Cluaiz-search-files-v0.1.0.zip"
+        "file_directory": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search/cluaiz-search-files-v0.1.0.zip"
       }
     }
   }
@@ -100,6 +107,7 @@ Here is a full example of a perfectly structured Extension package:
 
 #### Level 1: Ecosystem Identity & Typing
 - `id`, `name`, `title`: Unique identifiers used in the CLI and UI to display the package.
+- `logo`: A relative path (e.g. `"/assets/cluaiz-search.webp"`) that points to a local directory *inside* the package's folder (e.g., `extensions/cluaize-search/assets/`). During the CI/CD build, this local `assets/` directory is automatically bundled into the Master ZIP, so the Engine extracts the logo locally without needing external CDNs.
 - `github_action`: A boolean flag (`true` or `false`). If `false`, the CI/CD pipeline will completely ignore this package and skip all build jobs, even if files were modified. This provides a hard manual override at the top level to disable automated builds.
 - `hub_type` (What is this package?):
   - `"extension"`: Deep OS integrations. Requires highly optimized binaries (`.dll`, `.so`) and always requires a `SKILL.md` to teach the AI how to use it safely.

@@ -53,8 +53,8 @@ jobs:
           if [ "${{ matrix.is_zip }}" == "true" ]; then
             echo "Bundling ZIP for ${{ matrix.id }}..."
             cd ${{ matrix.pkg_dir }}
-            # Using find/zip to package SKILL.md, README.md, scripts, references if they exist
-            zip -r ../../build/${{ matrix.filename }} . -i SKILL.md README.md scripts/\* references/\*
+            # Using find/zip to package local static assets
+            zip -r ../../build/${{ matrix.filename }} . -i SKILL.md README.md scripts/\* references/\* assets/\*
             cd -
           else
             echo "Simulated build for ${{ matrix.id }} on ${{ matrix.target }} version ${{ matrix.version }}" > build/${{ matrix.filename }}
