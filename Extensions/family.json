@@ -1,0 +1,7 @@
+{
+  "category": "extensions",
+  "name": "Cluaiz Extensions",
+  "items": {
+    "cluaize-search": "cluaize-search/package.json"
+  }
+}

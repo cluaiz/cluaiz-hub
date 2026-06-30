@@ -1,0 +1,8 @@
+{
+  "category": "skills",
+  "name": "Cluaiz Skills",
+  "items": {
+    "minimax-music-gen": "minimax-music-gen/package.json",
+    "frontend-dev": "frontend-dev/package.json"
+  }
+}

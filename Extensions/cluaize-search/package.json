@@ -1,0 +1,41 @@
+{
+  "id": "cluaiz-search",
+  "name": "Cluaiz Search Extension",
+  "category": "search",
+  "hub_type": "extension",
+  "build_type": "binary",
+  "logo": "/assets/cluaiz-search.webp",
+  "title": "Cluaiz Search",
+  "description": "High-performance native search extension for Cluaiz. Automatically built and compiled for various architectures to ensure maximum speed and deep integration.",
+  "tags": [
+    "Search",
+    "Native",
+    "C++",
+    "Core"
+  ],
+  "documentation": "https://github.com/cluaiz/cluaiz-hub/blob/main/extensions/Cluaiz-search/README.md",
+  "latest_version": "0.1.0",
+  "versions": {
+    "0.1.0": {
+      "release_date": "2026-06-29",
+      "builds_os": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "changelog": "Nightly release with latest native performance improvements.",
+      "os": {
+        "windows": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-Cluaiz-search/Cluaiz_search_windows_x64_v0.1.0.dll",
+        "macos": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-Cluaiz-search/libCluaiz_search_macos_arm64_v0.1.0.dylib",
+        "linux": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-Cluaiz-search/libCluaiz_search_linux_x64_v0.1.0.so"
+      },
+      "files": {
+        "skill": "/SKILL.md",
+        "scripts": "/scripts",
+        "references": "/references",
+        "manifest": "/manifest-extension.yaml",
+        "file_directory": "https://raw.githubusercontent.com/cluaiz/cluaiz-hub/main/extensions/Cluaiz-search-files-v0.1.0.zip"
+      }
+    }
+  }
+}

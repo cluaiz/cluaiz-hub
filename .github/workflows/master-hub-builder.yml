@@ -1,0 +1,75 @@
+name: Master Hub Builder
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'extensions/**'
+      - 'skills/**'
+      - 'plugins/**'
+      - 'mcp/**'
+      - 'souls/**'
+  workflow_dispatch:
+
+jobs:
+  analyze-changes:
+    name: Generate Dynamic Build Matrix
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      should_run: ${{ steps.set-matrix.outputs.should_run }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2 # Needed for git diff
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Matrix Builder
+        id: set-matrix
+        run: python .github/scripts/hub-matrix-builder.py
+
+  build-and-release:
+    name: Build ${{ matrix.target }} for ${{ matrix.id }}
+    needs: analyze-changes
+    if: needs.analyze-changes.outputs.should_run == 'true'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.analyze-changes.outputs.matrix) }}
+      
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build or Bundle ZIP
+        run: |
+          mkdir -p build/
+          if [ "${{ matrix.is_zip }}" == "true" ]; then
+            echo "Bundling ZIP for ${{ matrix.id }}..."
+            cd ${{ matrix.pkg_dir }}
+            # Using find/zip to package SKILL.md, README.md, scripts, references if they exist
+            zip -r ../../build/${{ matrix.filename }} . -i SKILL.md README.md scripts/\* references/\*
+            cd -
+          else
+            echo "Simulated build for ${{ matrix.id }} on ${{ matrix.target }} version ${{ matrix.version }}" > build/${{ matrix.filename }}
+          fi
+
+      - name: Upload to Unified Package Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ matrix.tag_name }}
+          name: "${{ matrix.id }} (Unified Release)"
+          body: "Automated rolling release for ${{ matrix.id }}. All versions are appended here."
+          draft: false
+          prerelease: false
+          files: build/${{ matrix.filename }}
+          fail_on_unmatched_files: true
+          append_body: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
