@@ -68,6 +68,7 @@ Here is a full example of a perfectly structured Extension package:
   "category": "search",
   "hub_type": "extension", 
   "build_type": "binary",
+  "github_action": true,
   "logo": "/assets/cluaiz-search.webp",
   "description": "High-performance native search extension for Cluaiz...",
   "tags": ["Search", "Native", "C++", "Core"],
@@ -75,7 +76,7 @@ Here is a full example of a perfectly structured Extension package:
   "latest_version": "0.1.0",
   "versions": {
     "0.1.0": {
-      "release_date": "2026-06-29",
+      "updated_at": "2026-06-30T18:00:00Z",
       "builds_os": ["windows", "macos", "linux"],
       "changelog": "Nightly release with latest native performance improvements.",
       "os": {
@@ -99,6 +100,7 @@ Here is a full example of a perfectly structured Extension package:
 
 #### Level 1: Ecosystem Identity & Typing
 - `id`, `name`, `title`: Unique identifiers used in the CLI and UI to display the package.
+- `github_action`: A boolean flag (`true` or `false`). If `false`, the CI/CD pipeline will completely ignore this package and skip all build jobs, even if files were modified. This provides a hard manual override at the top level to disable automated builds.
 - `hub_type` (What is this package?):
   - `"extension"`: Deep OS integrations. Requires highly optimized binaries (`.dll`, `.so`) and always requires a `SKILL.md` to teach the AI how to use it safely.
   - `"plugin"`: Independent modular tools. Can be compiled to WASM or Native. `SKILL.md` is optional but recommended.
@@ -112,7 +114,7 @@ Here is a full example of a perfectly structured Extension package:
 #### Level 2: Granular Version Control (`versions`)
 The `versions` object gives developers explicit control over every historical version of their tool.
 
-- `release_date`: Controls rebuild logic. If you need to rebuild a version without bumping the number, change this date. The CI/CD Python script will detect the timestamp diff and trigger a re-release.
+- `updated_at`: The absolute timestamp of this version build (e.g. `2026-06-30T10:00:00Z`). **Security & Caching:** The CI/CD Python script and the Engine use this time signature. If a developer builds 10 times a day without bumping the version number (e.g., `v0.1.0`), they MUST change this timestamp. The build action will NOT trigger unless this time is modified. (Note: The master `registry.json`'s `updated` time must also be synced).
 - `builds_os`: An array defining exactly which targets to compile. E.g., adding `"android"` to this array tells the CI/CD to instantly spin up mobile compilation targets.
 - `os` (The Heavy Binaries): 
   - Explicit URLs to the OS-specific compiled binaries on GitHub Releases. 

@@ -39,6 +39,11 @@ def main():
         pkg_id = data.get("id", "unknown")
         build_type = data.get("build_type", "none")
         version = data.get("latest_version", "1.0.0")
+        github_action = data.get("github_action", True)
+        
+        if not github_action:
+            print(f"Skipping {pkg_id} as github_action is set to false.")
+            continue
         
         # Determine prefix based on category path
         category = pkg_path.split('/')[0]

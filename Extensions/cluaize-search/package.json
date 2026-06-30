@@ -4,6 +4,7 @@
   "category": "search",
   "hub_type": "extension",
   "build_type": "binary",
+  "github_action": true,
   "logo": "/assets/cluaiz-search.webp",
   "title": "Cluaiz Search",
   "description": "High-performance native search extension for Cluaiz. Automatically built and compiled for various architectures to ensure maximum speed and deep integration.",
@@ -17,7 +18,7 @@
   "latest_version": "0.1.0",
   "versions": {
     "0.1.0": {
-      "release_date": "2026-06-29",
+      "updated_at": "2026-06-30T18:00:00Z",
       "builds_os": [
         "windows",
         "macos",
