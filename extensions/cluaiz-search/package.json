@@ -1,7 +1,7 @@
 {
   "id": "cluaiz-search",
-  "name": "Cluaiz Search",
-  "category": "search",
+  "name": "Cluaiz Web Search",
+  "category": "research",
   "hub_type": "extension",
   "build_type": "binary",
   "github_action": true,
