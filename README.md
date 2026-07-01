@@ -46,35 +46,6 @@ A **Soul** defines an AI agent's core identity, constraints, and bundles specifi
 ### 5. 🌐 MCP (Model Context Protocol)
 External standard connectors. If a tool runs on a completely different server (like Slack or GitHub), an MCP connector bridges it to the cluaiz Engine.
 
----
-
-## 📂 Repository Structure
-
-```text
-cluaiz-hub/
-├── extensions/                  # Bundled (Brain + Muscle) systems
-│   └── cluaiz-database/        # Example: The cluaizd database framework
-│       ├── manifest.json        # Capabilities & limits
-│       ├── SKILL.md             # The Brain
-│       └── native/              # The Muscle (.dll/.wasm)
-│
-├── plugins/                     # Standalone Muscle binaries (No Brains)
-│   ├── web-scraper/
-│   └── audio-transcriber/
-│
-├── skills/                      # Standalone Brain recipes (No Muscle)
-│   ├── productivity/
-│   └── coding/
-│
-├── souls/                       # Core Personas
-│   └── hacker/
-│       └── SOUL.md
-│
-├── mcp/                         # External connectors
-│
-├── doc/                         # Deep Documentation
-└── registry.json                # Auto-generated index of all modules
-```
 
 ---
 
