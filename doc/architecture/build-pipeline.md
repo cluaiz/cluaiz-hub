@@ -39,11 +39,11 @@ Located inside each category folder (e.g., `extensions/family.json`). It acts as
   "category": "extensions",
   "description": "Deep OS-level integrations requiring native compiled binaries.",
   "items": {
-    "cluaize-search": "cluaize-search/package.json",
-    "cluaize-database": "cluaize-db/package.json",
-    "cluaize-vision": "cluaize-vision/package.json",
-    "cluaize-terminal": "cluaize-terminal/package.json",
-    "cluaize-audio": "cluaize-audio/package.json"
+    "cluaiz-search": "cluaiz-search/package.json",
+    "cluaiz-database": "cluaiz-db/package.json",
+    "cluaiz-vision": "cluaiz-vision/package.json",
+    "cluaiz-terminal": "cluaiz-terminal/package.json",
+    "cluaiz-audio": "cluaiz-audio/package.json"
   }
 }
 ```
@@ -78,7 +78,7 @@ Here is a full example of a perfectly structured Extension package:
     "Cross-platform",
     "Retrieval"
   ],
-  "documentation": "https://github.com/cluaiz/cluaiz-hub/blob/main/extensions/cluaize-search/README.md",
+  "documentation": "https://github.com/cluaiz/cluaiz-hub/blob/main/extensions/cluaiz-search/README.md",
   "latest_version": "0.1.0",
   "versions": {
     "0.1.0": {
@@ -106,7 +106,7 @@ Here is a full example of a perfectly structured Extension package:
 
 #### Level 1: Ecosystem Identity & Typing
 - `id`, `name`, `title`: Unique identifiers used in the CLI and UI to display the package.
-- `logo`: A relative path (e.g. `"/assets/cluaiz-search.webp"`) that points to a local directory *inside* the package's folder (e.g., `extensions/cluaize-search/assets/`). During the CI/CD build, this local `assets/` directory is automatically bundled into the Master ZIP, so the Engine extracts the logo locally without needing external CDNs.
+- `logo`: A relative path (e.g. `"/assets/cluaiz-search.webp"`) that points to a local directory *inside* the package's folder (e.g., `extensions/cluaiz-search/assets/`). During the CI/CD build, this local `assets/` directory is automatically bundled into the Master ZIP, so the Engine extracts the logo locally without needing external CDNs.
 - `github_action`: A boolean flag (`true` or `false`). If `false`, the CI/CD pipeline will completely ignore this package and skip all build jobs, even if files were modified. This provides a hard manual override at the top level to disable automated builds.
 - `hub_type` (What is this package?):
   - `"extension"`: Deep OS integrations. Requires highly optimized binaries (`.dll`, `.so`) and always requires a `SKILL.md` to teach the AI how to use it safely.
@@ -151,7 +151,7 @@ For massive skills (e.g., Code Reviewers), putting 10,000 lines of documentation
 The `master-hub-builder.yml` and `hub-matrix-builder.py` operate in 4 distinct phases:
 
 ### Phase 1: Git Diff Detection
-When a developer pushes to `main`, the Python script runs `git diff HEAD^ HEAD`. It detects exactly which folders (e.g., `extensions/cluaize-search`) were modified.
+When a developer pushes to `main`, the Python script runs `git diff HEAD^ HEAD`. It detects exactly which folders (e.g., `extensions/cluaiz-search`) were modified.
 
 ### Phase 2: Matrix Generation
 For every modified package, the script reads `package.json`. 
@@ -166,9 +166,9 @@ zip -r package.zip SKILL.md README.md scripts/ references/
 *Note: The binary is kept separate from the ZIP.*
 
 ### Phase 4: Rolling Release Upload
-The pipeline uploads the files to a permanent, rolling GitHub Release tag (e.g., `ext-cluaize-search`). 
-- It uploads `cluaize_search_windows_x64_v0.1.0.dll`
-- It uploads `cluaize_search_v0.1.0.zip` (The Master ZIP)
+The pipeline uploads the files to a permanent, rolling GitHub Release tag (e.g., `ext-cluaiz-search`). 
+- It uploads `cluaiz_search_windows_x64_v0.1.0.dll`
+- It uploads `cluaiz_search_v0.1.0.zip` (The Master ZIP)
 This ensures we don't spam the repository with 20,000 unique releases.
 
 ---

@@ -1,0 +1,63 @@
+{
+  "id": "cluaiz-search",
+  "name": "Cluaiz Search",
+  "category": "search",
+  "hub_type": "extension",
+  "build_type": "binary",
+  "github_action": true,
+  "logo": "/assets/cluaiz-search.webp",
+  "title": "Cluaiz Live Web Search Extension",
+  "description": "Native web search extension for the Cluaiz Engine. Allows the AI to autonomously query the internet, scrape websites, and inject real-time live data directly into the active context window. Bypasses standard network stacks via zero-latency C-FFI for lightning-fast web retrieval.",
+  "tags": [
+    "Web Search",
+    "Internet",
+    "Live Data",
+    "Web Scraper"
+  ],
+  "documentation": "https://github.com/cluaiz/cluaiz-hub/blob/main/extensions/cluaiz-search/README.md",
+  "latest_version": "0.1.1",
+  "versions": {
+    "0.1.1": {
+      "updated_at": "2026-07-01T12:00:00Z",
+      "builds_os": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "changelog": "Fixed spelling of cluaiz (removed trailing e) across all files and folder names.",
+      "os": {
+        "windows": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.1/cluaiz-search_windows_x64.dll",
+        "macos": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.1/libcluaiz-search_macos_arm64.dylib",
+        "linux": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.1/libcluaiz-search_linux_x64.so"
+      },
+      "files": {
+        "skill": "/SKILL.md",
+        "scripts": "/scripts",
+        "references": "/references",
+        "manifest": "/manifest-extension.yaml",
+        "file_directory": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.1/cluaiz-search-files.zip"
+      }
+    },
+    "0.1.0": {
+      "updated_at": "2026-06-30T22:37:00Z",
+      "builds_os": [
+        "windows",
+        "macos",
+        "linux"
+      ],
+      "changelog": "Nightly release with latest native performance improvements.",
+      "os": {
+        "windows": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.0/cluaiz-search_windows_x64.dll",
+        "macos": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.0/libcluaiz-search_macos_arm64.dylib",
+        "linux": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.0/libcluaiz-search_linux_x64.so"
+      },
+      "files": {
+        "skill": "/SKILL.md",
+        "scripts": "/scripts",
+        "references": "/references",
+        "manifest": "/manifest-extension.yaml",
+        "file_directory": "https://github.com/cluaiz/cluaiz-hub/releases/download/ext-cluaiz-search-v0.1.0/cluaiz-search-files.zip"
+      }
+    }
+  }
+}

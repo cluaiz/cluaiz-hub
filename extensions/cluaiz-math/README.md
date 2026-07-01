@@ -10,6 +10,6 @@ Unlike `cluaiz-db` (which is a native compiled `.dll` with unrestricted OS acces
 
 ## How it works (The No-Build Flow)
 1. The user copies the plugin folder containing `manifest.yaml` and `bin/plugin.wasm` directly into `.cluaiz/extensions/`.
-2. Upon engine boot, `cluaizExtensionRegistry` parses `manifest.yaml` and checks that the `sandbox_type` is `WASM`.
+2. Upon engine boot, `cluaizxtensionRegistry` parses `manifest.yaml` and checks that the `sandbox_type` is `WASM`.
 3. The engine initializes a safe `WasmExecutor` context, loads the `bin/plugin.wasm` file dynamically, and routes matching CEL expressions directly through the WebAssembly FFI interface.
 4. **No local compiler, Cargo setup, or submodules are required.**

@@ -149,6 +149,13 @@ def main():
                 "is_zip": "false"
             })
             
+    if not matrix_jobs:
+        print("No matrix jobs to run.")
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+            f.write("should_run=false\n")
+            f.write("matrix={}\n")
+        return
+
     matrix = {
         "include": matrix_jobs
     }
