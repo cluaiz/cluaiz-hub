@@ -7,18 +7,17 @@
   "github_action": true,
   "logo": "/assets/cluaiz-search.webp",
   "title": "Cluaiz Live Web Search Extension",
-  "description": "Native web search extension for the Cluaiz Engine. Allows the AI to autonomously query the internet, scrape websites, and inject real-time live data directly into the active context window. Bypasses standard network stacks via zero-latency C-FFI for lightning-fast web retrieval.",
+  "description": "Native web search extension for the Cluaiz Engine. Allows the AI to autonomously query the internet, scrape websites, and inject real-time live data directly into the active context window. Bypasses standard network stacks via direct C-FFI memory mapping for highly optimized web retrieval.",
   "tags": [
     "Web Search",
     "Internet",
     "Live Data",
     "Web Scraper"
   ],
-  "documentation": "https://github.com/cluaiz/cluaiz-hub/blob/main/extensions/cluaiz-search/README.md",
   "latest_version": "0.1.1",
   "versions": {
     "0.1.1": {
-      "updated_at": "2026-07-01T12:02:12Z",
+      "updated_at": "2026-07-01T14:30:00Z",
       "builds_os": [
         "windows",
         "macos",
